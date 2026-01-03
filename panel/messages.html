@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پیام‌های تماس | پنل مدیریت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-extras.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="flex items-center gap-3 mb-6">
+                <img src="../images/blog/r.php (2).png" alt="وب لجندر" class="w-12 h-12 object-contain">
+                <div>
+                    <h2 class="text-xl font-bold text-white">وب لجندر</h2>
+                    <p class="text-xs text-gray-300">پنل مدیریت</p>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>داشبورد</span>
+            </a>
+            <a href="templates.html" class="nav-item">
+                <i class="fas fa-file-code"></i>
+                <span>مدیریت قالب‌ها</span>
+            </a>
+            <a href="modules.html" class="nav-item">
+                <i class="fas fa-cube"></i>
+                <span>مدیریت ماژول‌ها</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>کاربران</span>
+            </a>
+            <a href="messages.html" class="nav-item active">
+                <i class="fas fa-envelope"></i>
+                <span>پیام‌های تماس</span>
+                <span class="badge" id="messagesBadge">0</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>سفارش‌ها</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i>
+                <span>پشتیبانی آنلاین</span>
+                <span class="badge" id="supportBadge" style="display: none;">0</span>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <i class="fas fa-tags"></i>
+                <span>دسته‌بندی‌ها</span>
+            </a>
+            <a href="comments.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>نظرات</span>
+            </a>
+            <a href="articles.html" class="nav-item">
+                <i class="fas fa-newspaper"></i>
+                <span>مقالات</span>
+            </a>
+            <a href="../index.html" class="nav-item mt-auto">
+                <i class="fas fa-arrow-right"></i>
+                <span>بازگشت به سایت</span>
+            </a>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        <header class="admin-header">
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800">پیام‌های تماس</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="btn btn-primary" onclick="markAllAsRead()">
+                        <i class="fas fa-check-double"></i> علامت‌گذاری همه به عنوان خوانده شده
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Filters -->
+            <div class="card mb-6">
+                <div class="card-body">
+                    <div class="flex flex-wrap gap-4">
+                        <select id="filterStatus" class="form-select" onchange="filterMessages()">
+                            <option value="all">همه پیام‌ها</option>
+                            <option value="unread">خوانده نشده</option>
+                            <option value="read">خوانده شده</option>
+                        </select>
+                        <input type="text" id="searchInput" class="form-input" placeholder="جستجو در پیام‌ها..." onkeyup="filterMessages()">
+                        <button class="btn btn-secondary" onclick="clearFilters()">
+                            <i class="fas fa-times"></i> پاک کردن فیلترها
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages List -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">لیست پیام‌ها</h3>
+                    <span class="text-sm text-gray-500" id="messagesCount">0 پیام</span>
+                </div>
+                <div class="card-body">
+                    <div id="messagesList" class="messages-list">
+                        <div class="text-center text-gray-500 py-8">در حال بارگذاری...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">مشاهده پیام</h3>
+                <button class="modal-close" onclick="closeMessageModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Message details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeMessageModal()">بستن</button>
+                <button class="btn btn-primary" id="replyBtn" onclick="replyToMessage()">
+                    <i class="fas fa-reply"></i> پاسخ به ایمیل
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/messages.js"></script>
+</body>
+</html>
+

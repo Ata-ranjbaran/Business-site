@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقالات | پنل مدیریت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-extras.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="flex items-center gap-3 mb-6">
+                <img src="../images/blog/r.php (2).png" alt="وب لجندر" class="w-12 h-12 object-contain">
+                <div>
+                    <h2 class="text-xl font-bold text-white">وب لجندر</h2>
+                    <p class="text-xs text-gray-300">پنل مدیریت</p>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>داشبورد</span>
+            </a>
+            <a href="templates.html" class="nav-item">
+                <i class="fas fa-file-code"></i>
+                <span>مدیریت قالب‌ها</span>
+            </a>
+            <a href="modules.html" class="nav-item">
+                <i class="fas fa-cube"></i>
+                <span>مدیریت ماژول‌ها</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>کاربران</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span>پیام‌های تماس</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>سفارش‌ها</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i>
+                <span>پشتیبانی آنلاین</span>
+                <span class="badge" id="supportBadge" style="display: none;">0</span>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <i class="fas fa-tags"></i>
+                <span>دسته‌بندی‌ها</span>
+            </a>
+            <a href="comments.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>نظرات</span>
+            </a>
+            <a href="articles.html" class="nav-item active">
+                <i class="fas fa-newspaper"></i>
+                <span>مقالات</span>
+            </a>
+            <a href="../index.html" class="nav-item mt-auto">
+                <i class="fas fa-arrow-right"></i>
+                <span>بازگشت به سایت</span>
+            </a>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        <header class="admin-header">
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800">مدیریت مقالات</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="btn btn-primary" onclick="addArticle()">
+                        <i class="fas fa-plus"></i> افزودن مقاله جدید
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Filters -->
+            <div class="card mb-6">
+                <div class="card-body">
+                    <div class="flex flex-wrap gap-4">
+                        <input type="text" id="searchInput" class="form-input" placeholder="جستجو در مقالات..." onkeyup="filterArticles()">
+                        <select id="filterStatus" class="form-select" onchange="filterArticles()">
+                            <option value="all">همه وضعیت‌ها</option>
+                            <option value="published">منتشر شده</option>
+                            <option value="draft">پیش‌نویس</option>
+                        </select>
+                        <button class="btn btn-secondary" onclick="clearFilters()">
+                            <i class="fas fa-times"></i> پاک کردن
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles List -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">لیست مقالات</h3>
+                    <span class="text-sm text-gray-500" id="articlesCount">0 مقاله</span>
+                </div>
+                <div class="card-body">
+                    <div class="overflow-x-auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>عنوان</th>
+                                    <th>نویسنده</th>
+                                    <th>دسته‌بندی</th>
+                                    <th>تاریخ</th>
+                                    <th>وضعیت</th>
+                                    <th>بازدید</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="articlesTable">
+                                <tr>
+                                    <td colspan="7" class="text-center text-gray-500 py-8">در حال بارگذاری...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Modal -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content" style="max-width: 900px; max-height: 95vh; overflow-y: auto;">
+            <div class="modal-header">
+                <h3 id="modalTitle">افزودن مقاله جدید</h3>
+                <button class="modal-close" onclick="closeArticleModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="articleForm" onsubmit="saveArticle(event)">
+                    <div class="form-group">
+                        <label>عنوان مقاله</label>
+                        <input type="text" id="articleTitle" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>محتوا (HTML)</label>
+                        <div class="mb-2 flex gap-2">
+                            <button type="button" class="btn btn-sm btn-secondary" onclick="insertHTMLTag('h3', 'عنوان')">
+                                <i class="fas fa-heading"></i> عنوان
+                            </button>
+                            <button type="button" class="btn btn-sm btn-secondary" onclick="insertHTMLTag('p', 'پاراگراف')">
+                                <i class="fas fa-paragraph"></i> پاراگراف
+                            </button>
+                            <button type="button" class="btn btn-sm btn-secondary" onclick="insertHTMLTag('ul', 'لیست')">
+                                <i class="fas fa-list"></i> لیست
+                            </button>
+                            <button type="button" class="btn btn-sm btn-secondary" onclick="insertHTMLTag('strong', 'متن برجسته')">
+                                <i class="fas fa-bold"></i> برجسته
+                            </button>
+                        </div>
+                        <textarea id="articleContent" class="form-input font-mono text-sm" rows="15" required placeholder="محتوا را به صورت HTML وارد کنید..."></textarea>
+                        <small class="text-gray-500 mt-1 block">می‌توانید از تگ‌های HTML استفاده کنید</small>
+                        <div class="mt-2 p-3 bg-gray-50 rounded border border-gray-200">
+                            <label class="text-sm font-semibold mb-2 block">پیش‌نمایش محتوا:</label>
+                            <div id="articleContentPreview" class="min-h-32 p-3 bg-white rounded border border-gray-300 text-gray-600 text-sm">
+                                پیش‌نمایش در اینجا نمایش داده می‌شود...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label>دسته‌بندی</label>
+                            <select id="articleCategory" class="form-select" onchange="updateCategoryClass()">
+                                <option value="آموزش">آموزش</option>
+                                <option value="نکته">نکته</option>
+                                <option value="تکنولوژی">تکنولوژی</option>
+                                <option value="عمومی">عمومی</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>وضعیت</label>
+                            <select id="articleStatus" class="form-select">
+                                <option value="published">منتشر شده</option>
+                                <option value="draft">پیش‌نویس</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label>تاریخ</label>
+                            <input type="text" id="articleDate" class="form-input" placeholder="مثال: 15 دی 1403">
+                        </div>
+                        <div class="form-group">
+                            <label>کلاس استایل دسته‌بندی</label>
+                            <select id="articleCategoryClass" class="form-select">
+                                <option value="text-blue-600 bg-blue-50">آبی (آموزش)</option>
+                                <option value="text-orange-600 bg-orange-50">نارنجی (نکته)</option>
+                                <option value="text-green-600 bg-green-50">سبز (تکنولوژی)</option>
+                                <option value="text-gray-600 bg-gray-50">خاکستری (عمومی)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>تصویر شاخص</label>
+                        <input type="file" id="articleImageFile" class="form-input" accept="image/*" onchange="handleArticleImageUpload(event)">
+                        <div id="articleImagePreview" class="mt-2" style="display: none;">
+                            <img id="articleImagePreviewImg" src="" alt="پیش‌نمایش" class="max-w-full h-48 object-cover rounded-lg border border-gray-300">
+                            <button type="button" class="btn btn-sm btn-danger mt-2" onclick="removeArticleImage()">
+                                <i class="fas fa-times"></i> حذف تصویر
+                            </button>
+                        </div>
+                        <input type="hidden" id="articleImage" value="">
+                        <small class="text-gray-500 mt-1 block">یا آدرس تصویر را وارد کنید:</small>
+                        <input type="text" id="articleImageUrl" class="form-input mt-2" placeholder="آدرس تصویر (مثال: images/blog/image.jpg)" onchange="updateArticleImageFromUrl()">
+                    </div>
+                    <div class="form-group">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="articleShowOnHomepage" class="w-5 h-5">
+                            <span>نمایش در صفحه اصلی (فقط 3 وبلاگ اول منتشر شده نمایش داده می‌شوند)</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeArticleModal()">انصراف</button>
+                <button class="btn btn-primary" onclick="document.getElementById('articleForm').requestSubmit()">
+                    <i class="fas fa-save"></i> ذخیره
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/articles.js"></script>
+</body>
+</html>
+

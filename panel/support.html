@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پشتیبانی آنلاین | پنل مدیریت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-extras.css">
+    <style>
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px);
+            max-height: 800px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .message.admin {
+            flex-direction: row-reverse;
+        }
+        
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            word-wrap: break-word;
+        }
+        
+        .message.user .message-content {
+            background: #e5e7eb;
+            color: #111827;
+        }
+        
+        .message.admin .message-content {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .message-time {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .message.admin .message-time {
+            text-align: left;
+        }
+        
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            resize: none;
+            font-family: inherit;
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .user-avatar.user {
+            background: #6b7280;
+        }
+        
+        .user-avatar.admin {
+            background: #3b82f6;
+        }
+        
+        .online-indicator {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 2px solid white;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .user-avatar-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="flex items-center gap-3 mb-6">
+                <img src="../images/blog/r.php (2).png" alt="وب لجندر" class="w-12 h-12 object-contain">
+                <div>
+                    <h2 class="text-xl font-bold text-white">وب لجندر</h2>
+                    <p class="text-xs text-gray-300">پنل مدیریت</p>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>داشبورد</span>
+            </a>
+            <a href="templates.html" class="nav-item">
+                <i class="fas fa-file-code"></i>
+                <span>مدیریت قالب‌ها</span>
+            </a>
+            <a href="modules.html" class="nav-item">
+                <i class="fas fa-cube"></i>
+                <span>مدیریت ماژول‌ها</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>کاربران</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span>پیام‌های تماس</span>
+                <span class="badge" id="messagesBadge">0</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>سفارش‌ها</span>
+            </a>
+            <a href="support.html" class="nav-item active">
+                <i class="fas fa-headset"></i>
+                <span>پشتیبانی آنلاین</span>
+                <span class="badge" id="supportBadge" style="display: none;">0</span>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <i class="fas fa-tags"></i>
+                <span>دسته‌بندی‌ها</span>
+            </a>
+            <a href="comments.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>نظرات</span>
+            </a>
+            <a href="articles.html" class="nav-item">
+                <i class="fas fa-newspaper"></i>
+                <span>مقالات</span>
+            </a>
+            <a href="../index.html" class="nav-item mt-auto">
+                <i class="fas fa-arrow-right"></i>
+                <span>بازگشت به سایت</span>
+            </a>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        <header class="admin-header">
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800">پشتیبانی آنلاین</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="clearAllChatHistory()" class="btn btn-danger" title="حذف تمام پیام‌های چت">
+                        <i class="fas fa-trash-alt ml-2"></i>حذف تمام پیام‌ها
+                    </button>
+                    <select id="userFilter" class="form-select" onchange="filterChats()">
+                        <option value="all">همه کاربران</option>
+                        <option value="active">فعال</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Users List -->
+                <div class="lg:col-span-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">کاربران آنلاین</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="usersList" class="space-y-2">
+                                <!-- Users will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Area -->
+                <div class="lg:col-span-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title" id="chatTitle">انتخاب کاربر برای شروع چت</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="chatArea" class="chat-container">
+                                <div id="chatMessages" class="chat-messages">
+                                    <div class="text-center text-gray-500 py-8">
+                                        لطفاً یک کاربر را از لیست انتخاب کنید
+                                    </div>
+                                </div>
+                                <div id="chatInputArea" class="chat-input-area" style="display: none;">
+                                    <textarea id="chatInput" class="chat-input" rows="3" placeholder="پیام خود را بنویسید..." onkeypress="handleKeyPress(event)"></textarea>
+                                    <button class="btn btn-primary" onclick="sendMessage()">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/support.js"></script>
+</body>
+</html>
+

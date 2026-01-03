@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دسته‌بندی‌ها | پنل مدیریت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-extras.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="flex items-center gap-3 mb-6">
+                <img src="../images/blog/r.php (2).png" alt="وب لجندر" class="w-12 h-12 object-contain">
+                <div>
+                    <h2 class="text-xl font-bold text-white">وب لجندر</h2>
+                    <p class="text-xs text-gray-300">پنل مدیریت</p>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>داشبورد</span>
+            </a>
+            <a href="templates.html" class="nav-item">
+                <i class="fas fa-file-code"></i>
+                <span>مدیریت قالب‌ها</span>
+            </a>
+            <a href="modules.html" class="nav-item">
+                <i class="fas fa-cube"></i>
+                <span>مدیریت ماژول‌ها</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>کاربران</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span>پیام‌های تماس</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>سفارش‌ها</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i>
+                <span>پشتیبانی آنلاین</span>
+                <span class="badge" id="supportBadge" style="display: none;">0</span>
+            </a>
+            <a href="categories.html" class="nav-item active">
+                <i class="fas fa-tags"></i>
+                <span>دسته‌بندی‌ها</span>
+            </a>
+            <a href="comments.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>نظرات</span>
+            </a>
+            <a href="articles.html" class="nav-item">
+                <i class="fas fa-newspaper"></i>
+                <span>مقالات</span>
+            </a>
+            <a href="../index.html" class="nav-item mt-auto">
+                <i class="fas fa-arrow-right"></i>
+                <span>بازگشت به سایت</span>
+            </a>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        <header class="admin-header">
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800">مدیریت دسته‌بندی‌ها</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="btn btn-secondary" onclick="refreshCategories()" title="بارگذاری مجدد دسته‌بندی‌ها از صفحات اصلی">
+                        <i class="fas fa-sync-alt"></i> بارگذاری مجدد
+                    </button>
+                    <button class="btn btn-primary" id="addCategoryBtn" onclick="addCategory()">
+                        <i class="fas fa-plus"></i> افزودن دسته‌بندی جدید
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Tabs -->
+            <div class="card mb-6">
+                <div class="card-body">
+                    <div class="flex gap-4 border-b border-gray-200">
+                        <button id="templatesTab" class="tab-btn active px-6 py-3 font-semibold text-gray-700 border-b-2 border-blue-600 transition-all" onclick="switchTab('templates')">
+                            <i class="fas fa-file-code ml-2"></i> دسته‌بندی قالب‌ها
+                        </button>
+                        <button id="modulesTab" class="tab-btn px-6 py-3 font-semibold text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition-all" onclick="switchTab('modules')">
+                            <i class="fas fa-cube ml-2"></i> دسته‌بندی ماژول‌ها
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="card mb-6">
+                <div class="card-body">
+                    <div class="flex flex-wrap gap-4">
+                        <input type="text" id="searchInput" class="form-input" placeholder="جستجو در دسته‌بندی‌ها..." onkeyup="filterCategories()">
+                        <button class="btn btn-secondary" onclick="clearFilters()">
+                            <i class="fas fa-times"></i> پاک کردن
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" id="sectionTitle">لیست دسته‌بندی قالب‌ها</h3>
+                    <span class="text-sm text-gray-500" id="categoriesCount">0 دسته‌بندی</span>
+                </div>
+                <div class="card-body">
+                    <div id="categoriesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="text-center text-gray-500 py-8">در حال بارگذاری...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Modal -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">افزودن دسته‌بندی جدید</h3>
+                <button class="modal-close" onclick="closeCategoryModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm" onsubmit="saveCategory(event)">
+                    <input type="hidden" id="categoryType" value="templates">
+                    <div class="form-group">
+                        <label>نام دسته‌بندی</label>
+                        <input type="text" id="categoryName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>توضیحات</label>
+                        <textarea id="categoryDescription" class="form-input" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>آیکون (نام کلاس Font Awesome)</label>
+                        <input type="text" id="categoryIcon" class="form-input" placeholder="مثال: fas fa-tag">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeCategoryModal()">انصراف</button>
+                <button class="btn btn-primary" onclick="document.getElementById('categoryForm').requestSubmit()">
+                    <i class="fas fa-save"></i> ذخیره
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/categories.js"></script>
+</body>
+</html>
+

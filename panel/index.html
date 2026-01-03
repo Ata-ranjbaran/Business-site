@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت | وب لجندر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="flex items-center gap-3 mb-6">
+                <img src="../images/blog/r.php (2).png" alt="وب لجندر" class="w-12 h-12 object-contain">
+                <div>
+                    <h2 class="text-xl font-bold text-white">وب لجندر</h2>
+                    <p class="text-xs text-gray-300">پنل مدیریت</p>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>داشبورد</span>
+            </a>
+            <a href="templates.html" class="nav-item">
+                <i class="fas fa-file-code"></i>
+                <span>مدیریت قالب‌ها</span>
+            </a>
+            <a href="modules.html" class="nav-item">
+                <i class="fas fa-cube"></i>
+                <span>مدیریت ماژول‌ها</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>کاربران</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span>پیام‌های تماس</span>
+                <span class="badge" id="messagesBadge">0</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>سفارش‌ها</span>
+                <span class="badge" id="ordersBadge">0</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i>
+                <span>پشتیبانی آنلاین</span>
+                <span class="badge" id="supportBadge" style="display: none;">0</span>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <i class="fas fa-tags"></i>
+                <span>دسته‌بندی‌ها</span>
+            </a>
+            <a href="comments.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>نظرات</span>
+            </a>
+            <a href="articles.html" class="nav-item">
+                <i class="fas fa-newspaper"></i>
+                <span>مقالات</span>
+            </a>
+            <a href="../index.html" class="nav-item mt-auto">
+                <i class="fas fa-arrow-right"></i>
+                <span>بازگشت به سایت</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800">داشبورد</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="img/pro.jpg" alt="مدیر" class="profile-img">
+                        <span class="profile-name">مدیر سیستم</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="content-wrapper">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="stat-card">
+                    <div class="stat-icon bg-blue-500">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">کل قالب‌ها</h3>
+                        <p class="stat-value" id="totalTemplates">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-green-500">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">کل ماژول‌ها</h3>
+                        <p class="stat-value" id="totalModules">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-purple-500">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">سفارش‌های امروز</h3>
+                        <p class="stat-value" id="todayOrders">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-orange-500">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">پیام‌های جدید</h3>
+                        <p class="stat-value" id="newMessages">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="revenue-card">
+                    <div class="revenue-header">
+                        <i class="fas fa-wallet text-blue-500"></i>
+                        <h3>درآمد امروز</h3>
+                    </div>
+                    <p class="revenue-amount" id="todayRevenue">0 ریال</p>
+                    <p class="revenue-change positive">+12% نسبت به دیروز</p>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-header">
+                        <i class="fas fa-chart-line text-green-500"></i>
+                        <h3>درآمد این ماه</h3>
+                    </div>
+                    <p class="revenue-amount" id="monthRevenue">0 ریال</p>
+                    <p class="revenue-change positive">+25% نسبت به ماه قبل</p>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-header">
+                        <i class="fas fa-users text-purple-500"></i>
+                        <h3>کل کاربران</h3>
+                    </div>
+                    <p class="revenue-amount" id="totalUsers">0</p>
+                    <p class="revenue-change positive">+5 کاربر جدید امروز</p>
+                </div>
+            </div>
+
+            <!-- Charts and Tables -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <!-- Recent Orders -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">سفارش‌های اخیر</h3>
+                        <a href="orders.html" class="text-blue-600 hover:text-blue-800">مشاهده همه</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>شناسه</th>
+                                        <th>مشتری</th>
+                                        <th>محصول</th>
+                                        <th>مبلغ</th>
+                                        <th>وضعیت</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentOrdersTable">
+                                    <tr>
+                                        <td colspan="5" class="text-center text-gray-500 py-8">در حال بارگذاری...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Messages -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">پیام‌های اخیر</h3>
+                        <a href="messages.html" class="text-blue-600 hover:text-blue-800">مشاهده همه</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="messages-list" id="recentMessagesList">
+                            <div class="text-center text-gray-500 py-8">در حال بارگذاری...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Stats -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Top Products -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">پرفروش‌ترین محصولات</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-stats" id="topProductsList">
+                            <div class="text-center text-gray-500 py-8">در حال بارگذاری...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Statistics -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">آمار سبد خرید</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="cart-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">تعداد سبد خرید فعال</span>
+                                <span class="stat-number" id="activeCarts">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">میانگین تعداد محصول در سبد</span>
+                                <span class="stat-number" id="avgCartItems">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">نرخ تبدیل سبد به خرید</span>
+                                <span class="stat-number" id="conversionRate">0%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">کل محصولات اضافه شده</span>
+                                <span class="stat-number" id="totalCartItems">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
