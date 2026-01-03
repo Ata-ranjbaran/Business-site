@@ -1,0 +1,220 @@
+/* Reset Css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+* , *::before , *::after{
+	box-sizing: border-box;
+}
+button , input{
+	font-family: inherit;
+	border: 0;
+}
+
+/* fonts */
+@font-face {
+    font-family:"Yekanback Regular" ;
+    src: url("../fonts/YekanBakh-Regular.woff" );
+}
+
+@font-face {
+    font-family:"Yekanback Medium" ;
+    src: url("../fonts/YekanBakh-Medium.woff");
+}
+@font-face {
+    font-family:"Yekanback Heavy" ;
+    src: url("../fonts/YekanBakh-Heavy.woff");
+}
+@font-face {
+    font-family:"Yekanback Bold" ;
+    src: url("../fonts/YekanBakh-Bold.woff");
+	font-weight: bold;
+}
+
+/* App Css */
+body{
+   font-family:"Yekanback Medium" ;
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+    padding: 85px 0;
+    background-color: #e5e9ec;
+	color: #1d2939;
+}
+a{
+	text-decoration: none;
+}
+.icon-pack{
+    display: none;
+}
+.form-container{
+	background-color: #fff;
+	padding: 30px 60px 34px 60px;
+	border-radius: 16px;
+	margin: 0 16px;
+	text-align: center;
+	max-width: 564px;
+	width: 100%;
+
+}
+.form{
+	margin: 32px 0;
+	text-align: right;
+	display: flex;
+	flex-direction: column;
+	row-gap:24px ;
+}
+.form-container-title{
+	 font-family:"Yekanback Heavy" ;
+	font-size: 32px;
+	margin-bottom: 16px;
+
+}
+.form-container-caption{
+	font-size: 18px;
+	opacity: 50%;
+	text-align: center;
+
+}
+.form-container-lines{
+	font-size: 18px;
+	color:#a7a7a7 ;
+	display: flex;
+	align-items: center;
+}
+.form-links{
+	display: flex;
+	column-gap: 14px;
+	margin-top: 24px  ;
+
+}
+.form-links-item{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 8px;
+	border: 1px solid rgba(229, 229, 229, 80%);
+	background-color: #fff;
+	height: 52px;
+	border-radius: 4px;
+	flex: 1;
+
+}
+.form-container-line{
+	width: 100%;
+	height: 1px;
+	background-color: #e5e5e5;
+}
+
+.form-container-lines-text{
+	width: 84px;
+	flex-shrink: 0;
+	margin: 0 20px;
+	text-align: center;
+}
+.form-input-container{
+
+}
+.form-label{
+	font-size: 14px;
+	font-family:"Yekanback Bold" ;
+}
+.form-label::after{
+	content: "*";
+	color:#c9184a ;
+}
+.form-input{
+	display: block;
+	width: 100%;
+	margin-top: 16px;
+	font-size:14px ;
+	height: 52px;
+	font-family:"Yekanback Regular" ;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+	border-radius: 4px;
+	color: #1d2939;
+
+}
+.form-input::placeholder{
+	color: #a7a7a7;
+}
+.form-input:focus{
+	outline: none;
+	border-color:#1d2939 ;
+}
+.form-submit{
+	padding: 14px 0;
+	border-radius: 4px;
+	background-color:#1d2939;
+	color: #fff;
+	cursor: pointer;
+}
+
+
+
+
+
+
+@media (max-width:576px) {
+	.form-container-title{
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+	.form-container-caption{
+		font-size: 16px;
+	}
+	.form-container-lines-text{
+		margin: 0 16px;
+	}
+	.form-links{
+		flex-wrap: wrap;
+		row-gap: 16px;
+	}
+	.form-links-item{
+		flex: auto;
+		width: 100%;
+	}
+	.form-container{
+		padding:24px 20px ;
+	}
+}
