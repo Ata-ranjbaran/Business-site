@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرداخت موفق | وب لجندر</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .success-container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .checkmark {
+            animation: checkmark 0.6s ease-in-out;
+        }
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container w-full max-w-2xl">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
+            <!-- Success Icon -->
+            <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 checkmark">
+                <i class="fas fa-check-circle text-green-600 text-6xl"></i>
+            </div>
+
+            <!-- Success Message -->
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">پرداخت با موفقیت انجام شد!</h1>
+            <p class="text-gray-600 mb-8">سفارش شما با موفقیت ثبت و پرداخت شد. لینک دانلود به ایمیل شما ارسال خواهد شد.</p>
+
+            <!-- Order Details -->
+            <div id="orderDetails" class="bg-gray-50 rounded-xl p-6 mb-6 text-right">
+                <!-- Order details will be loaded here -->
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-4 justify-center">
+                <a href="index.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <i class="fas fa-home ml-2"></i>بازگشت به صفحه اصلی
+                </a>
+                <button onclick="downloadOrder()" class="bg-green-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <i class="fas fa-download ml-2"></i>دانلود فاکتور
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadOrderDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            
+            if (!orderId) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const order = orders.find(o => o.id == orderId);
+
+            if (!order) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const orderDetails = document.getElementById('orderDetails');
+            orderDetails.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+                        <span class="text-gray-600">شماره سفارش:</span>
+                        <span class="font-bold text-gray-900">${order.id}</span>
+                    </div>
+                    <div class="space-y-2">
+                        ${order.items.map(item => `
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">${item.name}</span>
+                                <span class="font-semibold text-blue-600">${item.pricingType === 'free' ? 'رایگان' : formatPrice(item.price) + ' ریال'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                        <span class="text-lg font-bold text-gray-900">جمع کل:</span>
+                        <span class="text-xl font-bold text-green-600">${formatPrice(order.total)} ریال</span>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-4">
+                        <i class="fas fa-clock ml-2"></i>
+                        ${new Date(order.createdAt).toLocaleDateString('fa-IR')} - ${new Date(order.createdAt).toLocaleTimeString('fa-IR')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function downloadOrder() {
+            alert('فاکتور به ایمیل شما ارسال خواهد شد!');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadOrderDetails);
+    </script>
+</body>
+</html>
+
+
+

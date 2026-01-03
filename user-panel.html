@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل کاربری | وب لجندر</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .panel-container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel-container max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="bg-white rounded-3xl shadow-2xl p-8 mb-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900" id="userName">کاربر</h1>
+                        <p class="text-gray-600" id="userEmail">ایمیل</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold transition">
+                        <i class="fas fa-home ml-2"></i>بازگشت به سایت
+                    </a>
+                    <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold transition">
+                        <i class="fas fa-sign-out-alt ml-2"></i>خروج از حساب
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-6">
+            <div class="flex border-b border-gray-200">
+                <button class="tab-button active flex-1 py-4 px-6 font-semibold text-gray-700" onclick="switchTab('profile')">
+                    <i class="fas fa-user ml-2"></i>مشخصات
+                </button>
+                <button class="tab-button flex-1 py-4 px-6 font-semibold text-gray-700" onclick="switchTab('cart')">
+                    <i class="fas fa-shopping-cart ml-2"></i>سبد خرید
+                </button>
+                <button class="tab-button flex-1 py-4 px-6 font-semibold text-gray-700" onclick="switchTab('orders')">
+                    <i class="fas fa-shopping-bag ml-2"></i>سفارش‌ها
+                </button>
+                <button class="tab-button flex-1 py-4 px-6 font-semibold text-gray-700" onclick="switchTab('downloads')">
+                    <i class="fas fa-download ml-2"></i>دانلودها
+                </button>
+                <button class="tab-button flex-1 py-4 px-6 font-semibold text-gray-700" onclick="switchTab('support')">
+                    <i class="fas fa-headset ml-2"></i>پشتیبانی
+                </button>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profileTab" class="p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">مشخصات کاربری</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                        <i class="fas fa-user text-blue-600 text-xl"></i>
+                        <div>
+                            <p class="text-sm text-gray-600">نام و نام خانوادگی</p>
+                            <p class="font-semibold text-gray-900" id="profileName">-</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                        <i class="fas fa-envelope text-blue-600 text-xl"></i>
+                        <div>
+                            <p class="text-sm text-gray-600">ایمیل</p>
+                            <p class="font-semibold text-gray-900" id="profileEmail">-</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                        <i class="fas fa-phone text-blue-600 text-xl"></i>
+                        <div>
+                            <p class="text-sm text-gray-600">شماره تماس</p>
+                            <p class="font-semibold text-gray-900" id="profilePhone">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Tab -->
+            <div id="cartTab" class="p-8 hidden">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">سبد خرید</h2>
+                <div id="cartItems" class="space-y-4">
+                    <!-- Cart items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div id="ordersTab" class="p-8 hidden">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">سفارش‌های من</h2>
+                <div id="ordersList" class="space-y-4">
+                    <!-- Orders will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Downloads Tab -->
+            <div id="downloadsTab" class="p-8 hidden">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">محصولات دانلود شده</h2>
+                <div id="downloadsList" class="space-y-4">
+                    <!-- Downloads will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Support Tab -->
+            <div id="supportTab" class="p-8 hidden">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">پشتیبانی آنلاین</h2>
+                <div class="bg-gray-50 rounded-2xl p-6" style="height: 500px; display: flex; flex-direction: column;">
+                    <!-- Chat Messages -->
+                    <div id="supportChatMessages" class="flex-1 overflow-y-auto mb-4 space-y-4" style="max-height: 400px;">
+                        <!-- Messages will be loaded here -->
+                    </div>
+                    <!-- Chat Input -->
+                    <div class="border-t border-gray-300 pt-4">
+                        <div class="mb-3">
+                            <select id="supportTopic" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">انتخاب موضوع...</option>
+                                <option value="صفحه اصلی">صفحه اصلی</option>
+                                <option value="صفحه قالب‌ها">صفحه قالب‌ها</option>
+                                <option value="صفحه ماژول‌ها">صفحه ماژول‌ها</option>
+                                <option value="مشکل در خرید">مشکل در خرید</option>
+                                <option value="مشکل در دانلود">مشکل در دانلود</option>
+                                <option value="سوال فنی">سوال فنی</option>
+                                <option value="پیشنهاد">پیشنهاد</option>
+                                <option value="سایر">سایر</option>
+                            </select>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" id="supportMessageInput" placeholder="پیام خود را بنویسید..." class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="file" id="supportImageInput" accept="image/*" class="hidden" onchange="handleSupportImageSelect(event)">
+                            <button onclick="document.getElementById('supportImageInput').click()" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <button onclick="sendSupportMessage()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
+                                <i class="fas fa-paper-plane ml-2"></i>ارسال
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+
+        function switchTab(tab) {
+            // Hide all tabs
+            document.querySelectorAll('[id$="Tab"]').forEach(t => t.classList.add('hidden'));
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tab + 'Tab').classList.remove('hidden');
+            event.target.classList.add('active');
+            
+            // Load tab data
+            if (tab === 'cart') loadCart();
+            if (tab === 'orders') loadOrders();
+            if (tab === 'downloads') loadDownloads();
+        }
+
+        function loadUserProfile() {
+            currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            document.getElementById('userName').textContent = currentUser.name || 'کاربر';
+            document.getElementById('userEmail').textContent = currentUser.email || '';
+            document.getElementById('profileName').textContent = currentUser.name || '-';
+            document.getElementById('profileEmail').textContent = currentUser.email || '-';
+            document.getElementById('profilePhone').textContent = currentUser.phone || '-';
+        }
+
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const cartItems = document.getElementById('cartItems');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-center text-gray-500 py-8">سبد خرید شما خالی است</p>';
+                return;
+            }
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-gray-900">${item.name}</h3>
+                        <p class="text-sm text-gray-600">${item.description || ''}</p>
+                        <p class="text-sm text-blue-600 mt-2">${item.pricingType === 'free' ? 'رایگان' : formatPrice(item.price) + ' ریال'}</p>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 p-2">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function loadOrders() {
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const userOrders = orders.filter(o => o.userId === currentUser.id);
+            const ordersList = document.getElementById('ordersList');
+            
+            if (userOrders.length === 0) {
+                ordersList.innerHTML = '<p class="text-center text-gray-500 py-8">هیچ سفارشی ثبت نشده است</p>';
+                return;
+            }
+
+            ordersList.innerHTML = userOrders.map(order => {
+                const statusBadge = {
+                    'pending': '<span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">در انتظار تایید</span>',
+                    'completed': '<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">تایید شده</span>',
+                    'cancelled': '<span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">لغو شده</span>'
+                }[order.status] || '';
+
+                return `
+                    <div class="p-6 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="font-bold text-gray-900">سفارش #${order.id}</h3>
+                                <p class="text-sm text-gray-600">${new Date(order.createdAt).toLocaleDateString('fa-IR')}</p>
+                            </div>
+                            ${statusBadge}
+                        </div>
+                        <div class="space-y-2 mb-4">
+                            ${order.items.map(item => `
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700">${item.name}</span>
+                                    <span class="text-blue-600 font-semibold">${item.pricingType === 'free' ? 'رایگان' : formatPrice(item.price) + ' ریال'}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                            <span class="font-bold text-gray-900">جمع کل:</span>
+                            <span class="text-xl font-bold text-green-600">${formatPrice(order.total)} ریال</span>
+                        </div>
+                        ${order.status === 'completed' ? `
+                            <button onclick="downloadOrder(${order.id})" class="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+                                <i class="fas fa-download ml-2"></i>دانلود محصولات
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function loadDownloads() {
+            const downloads = JSON.parse(localStorage.getItem('userDownloads') || '[]');
+            const userDownloads = downloads.filter(d => {
+                const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+                const order = orders.find(o => o.id === d.orderId);
+                return order && order.userId === currentUser.id;
+            });
+            
+            const downloadsList = document.getElementById('downloadsList');
+            
+            if (userDownloads.length === 0) {
+                downloadsList.innerHTML = '<p class="text-center text-gray-500 py-8">هیچ محصولی دانلود نشده است</p>';
+                return;
+            }
+
+            downloadsList.innerHTML = userDownloads.map(download => `
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-gray-900">${download.itemName}</h3>
+                        <p class="text-sm text-gray-600">${new Date(download.downloadedAt).toLocaleDateString('fa-IR')}</p>
+                    </div>
+                    <button onclick="downloadItem('${download.itemId}', '${download.itemName}')" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                        <i class="fas fa-download ml-2"></i>دانلود مجدد
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function removeFromCart(itemId) {
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            cart = cart.filter(item => item.id !== itemId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function downloadOrder(orderId) {
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const order = orders.find(o => o.id === orderId);
+            
+            if (!order || order.status !== 'completed') {
+                alert('این سفارش هنوز تایید نشده است!');
+                return;
+            }
+
+            // Add to downloads
+            const userDownloads = JSON.parse(localStorage.getItem('userDownloads') || '[]');
+            order.items.forEach(item => {
+                const alreadyDownloaded = userDownloads.some(d => 
+                    d.orderId === orderId && d.itemId === item.id
+                );
+                
+                if (!alreadyDownloaded) {
+                    userDownloads.push({
+                        orderId: orderId,
+                        itemId: item.id,
+                        itemName: item.name,
+                        itemType: item.type,
+                        downloadedAt: new Date().toISOString()
+                    });
+                }
+            });
+            localStorage.setItem('userDownloads', JSON.stringify(userDownloads));
+
+            // Simulate download
+            alert('دانلود محصولات شروع شد!');
+            loadDownloads();
+            loadOrders();
+        }
+
+        function downloadItem(itemId, itemName) {
+            alert(`در حال دانلود ${itemName}...`);
+        }
+
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Support Chat Functions
+        let selectedSupportImage = null;
+
+        function loadSupportChat() {
+            const chatMessages = document.getElementById('supportChatMessages');
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            
+            if (!currentUser) {
+                chatMessages.innerHTML = '<p class="text-center text-gray-500">لطفاً ابتدا وارد حساب کاربری خود شوید</p>';
+                return;
+            }
+
+            const userId = currentUser.email || currentUser.id;
+            const chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            
+            // Filter messages for this user (both user and admin messages)
+            const userMessages = chatHistory.filter(msg => {
+                if (msg.sender === 'user') {
+                    return (msg.userId === userId || msg.userEmail === userId);
+                } else if (msg.sender === 'admin') {
+                    return (msg.targetUserId === userId);
+                }
+                return false;
+            }).sort((a, b) => {
+                const timeA = new Date(a.timestamp || a.time || 0).getTime();
+                const timeB = new Date(b.timestamp || b.time || 0).getTime();
+                return timeA - timeB;
+            });
+
+            if (userMessages.length === 0) {
+                chatMessages.innerHTML = '<p class="text-center text-gray-500 py-8">هنوز پیامی رد و بدل نشده است. پیام خود را ارسال کنید.</p>';
+                return;
+            }
+
+            chatMessages.innerHTML = userMessages.map(msg => {
+                const isAdmin = msg.sender === 'admin';
+                const time = msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }) : (msg.time || '');
+                const displayName = isAdmin ? 'پشتیبانی' : (currentUser.name || 'شما');
+                
+                let messageContent = '';
+                if (msg.topic) {
+                    messageContent += `<div class="text-xs text-gray-500 mb-1">📌 ${msg.topic}</div>`;
+                }
+                if (msg.text) {
+                    messageContent += `<div class="text-gray-800">${msg.text}</div>`;
+                }
+                if (msg.image) {
+                    messageContent += `<img src="${msg.image}" alt="تصویر" class="mt-2 max-w-xs rounded-lg cursor-pointer" onclick="window.open('${msg.image}', '_blank')">`;
+                }
+
+                return `
+                    <div class="flex ${isAdmin ? 'justify-start' : 'justify-end'}">
+                        <div class="max-w-xs lg:max-w-md ${isAdmin ? 'bg-blue-100' : 'bg-green-100'} rounded-2xl p-4 ${isAdmin ? 'rounded-tl-none' : 'rounded-tr-none'}">
+                            <div class="font-semibold text-sm mb-1">${displayName}</div>
+                            ${messageContent}
+                            <div class="text-xs text-gray-500 mt-2">${time}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleSupportImageSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (!file.type.startsWith('image/')) {
+                alert('لطفاً فقط تصویر انتخاب کنید');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                selectedSupportImage = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function sendSupportMessage() {
+            const input = document.getElementById('supportMessageInput');
+            const topicSelect = document.getElementById('supportTopic');
+            const text = input.value.trim();
+            const topic = topicSelect.value;
+            const image = selectedSupportImage;
+
+            if (!topic) {
+                alert('لطفاً موضوع پیام را انتخاب کنید');
+                return;
+            }
+
+            if (!text && !image) {
+                alert('لطفاً متن یا تصویر را وارد کنید');
+                return;
+            }
+
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (!currentUser) {
+                alert('لطفاً ابتدا وارد حساب کاربری خود شوید');
+                return;
+            }
+
+            const userId = currentUser.email || currentUser.id;
+            const userName = currentUser.name || currentUser.email || 'کاربر';
+
+            // Save message to localStorage
+            const chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            const message = {
+                text: text,
+                sender: 'user',
+                time: new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
+                timestamp: new Date().toISOString(),
+                image: image,
+                topic: topic,
+                userId: userId,
+                userName: userName,
+                userEmail: currentUser.email || ''
+            };
+
+            chatHistory.push(message);
+            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+
+            // Clear input
+            input.value = '';
+            topicSelect.value = '';
+            selectedSupportImage = null;
+            document.getElementById('supportImageInput').value = '';
+
+            // Reload chat
+            loadSupportChat();
+
+            // Trigger update for admin panel
+            window.dispatchEvent(new CustomEvent('chatHistoryUpdated'));
+        }
+
+        function logout() {
+            // Confirm logout
+            if (confirm('آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟')) {
+                // Remove current user from localStorage
+                localStorage.removeItem('currentUser');
+                
+                // Clear cart (optional - you can keep it if you want)
+                // localStorage.removeItem('cart');
+                
+                // Redirect to home page
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Check URL params for download
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserProfile();
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('download') === 'true') {
+                switchTab('downloads');
+            }
+            
+            // Listen for order updates
+            window.addEventListener('ordersUpdated', () => {
+                loadOrders();
+                loadDownloads();
+            });
+        });
+    </script>
+</body>
+</html>
+

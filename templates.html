@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قالب‌ها - Ready Module</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        [dir="rtl"] {
+            direction: rtl;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #f8fafc;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+            background-size: 100% 100%, 100% 100%, 100% 100%;
+            background-position: 0 0, 0 0, 0 0;
+            background-repeat: no-repeat;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.02) 10px,
+                    rgba(59, 130, 246, 0.02) 20px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.02) 10px,
+                    rgba(59, 130, 246, 0.02) 20px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+        /* Dark Mode Styles */
+        .dark body {
+            background: #0f172a;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+            background-size: 100% 100%, 100% 100%, 100% 100%;
+            background-position: 0 0, 0 0, 0 0;
+            background-repeat: no-repeat;
+            color: #e2e8f0;
+        }
+        .dark body::before {
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.02) 10px,
+                    rgba(59, 130, 246, 0.02) 20px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.02) 10px,
+                    rgba(59, 130, 246, 0.02) 20px
+                );
+        }
+        .dark .bg-white {
+            background-color: #1e293b !important;
+        }
+        .dark .bg-gray-50 {
+            background-color: #0f172a !important;
+        }
+        .dark .text-gray-800,
+        .dark .text-gray-900 {
+            color: #e2e8f0 !important;
+        }
+        .dark .text-gray-600 {
+            color: #cbd5e1 !important;
+        }
+        .dark .text-gray-500 {
+            color: #94a3b8 !important;
+        }
+        .dark .border-gray-200 {
+            border-color: #334155 !important;
+        }
+        .dark .border-gray-100 {
+            border-color: #475569 !important;
+        }
+        .dark .header-fixed {
+            background: rgba(15, 23, 42, 0.95) !important;
+        }
+        .dark .sigma-logo {
+            color: #e2e8f0 !important;
+        }
+        .dark nav a {
+            color: #cbd5e1 !important;
+        }
+        .dark nav a:hover {
+            color: #60a5fa !important;
+        }
+        .dark .bg-gray-100 {
+            background-color: #1e293b !important;
+        }
+        .dark .bg-gray-200 {
+            background-color: #334155 !important;
+        }
+        .dark .text-white {
+            color: #e2e8f0 !important;
+        }
+        .dark .bg-gray-900 {
+            background-color: #0f172a !important;
+        }
+        .dark .theme-toggle-btn {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+        }
+        .dark .theme-toggle-btn:hover {
+            background-color: #334155 !important;
+        }
+        .dark .theme-icon-moon {
+            display: none !important;
+        }
+        .dark .theme-icon-sun {
+            display: block !important;
+        }
+        .theme-icon-sun {
+            display: none;
+        }
+        /* User Panel Button Dark Mode */
+        .dark #userPanelLink {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+        }
+        .dark #userPanelLink:hover {
+            background-color: #334155 !important;
+        }
+        .header-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .header-fixed a {
+            position: relative;
+        }
+        .header-fixed a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: #1e3a8a;
+            transition: width 0.3s ease;
+        }
+        .header-fixed a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-template {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .dark .card-template {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        .card-template:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .dark .card-template:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+        /* Override gradient classes in light mode - force white background */
+        html:not(.dark) .card-template {
+            background: white !important;
+        }
+        /* Force text color in light mode */
+        html:not(.dark) .card-template,
+        html:not(.dark) .card-template h3,
+        html:not(.dark) .card-template p,
+        html:not(.dark) .card-template span:not(.bg-green-500):not(.bg-orange-500) {
+            color: #111827 !important;
+        }
+        /* Disable gradient in light mode */
+        html:not(.dark) .card-template.gradient-arayeshgah,
+        html:not(.dark) .card-template.gradient-album,
+        html:not(.dark) .card-template.gradient-bazi,
+        html:not(.dark) .card-template.gradient-barname-nevisi,
+        html:not(.dark) .card-template.gradient-teknoloji,
+        html:not(.dark) .card-template.gradient-shar-keti,
+        html:not(.dark) .card-template.gradient-khane,
+        html:not(.dark) .card-template.gradient-gardeshgari,
+        html:not(.dark) .card-template.gradient-lebas,
+        html:not(.dark) .card-template.gradient-mashavarat,
+        html:not(.dark) .card-template.gradient-mosighi {
+            background: white !important;
+        }
+        /* Apply gradient only in dark mode */
+        .dark .card-template.gradient-arayeshgah,
+        .dark .card-template.gradient-album,
+        .dark .card-template.gradient-bazi,
+        .dark .card-template.gradient-barname-nevisi,
+        .dark .card-template.gradient-teknoloji,
+        .dark .card-template.gradient-shar-keti,
+        .dark .card-template.gradient-khane,
+        .dark .card-template.gradient-gardeshgari,
+        .dark .card-template.gradient-lebas,
+        .dark .card-template.gradient-mashavarat,
+        .dark .card-template.gradient-mosighi {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%) !important;
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .card-preview {
+            width: 100%;
+            height: 300px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background: #f3f4f6;
+            margin-bottom: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .dark .card-preview {
+            background: #0f172a;
+        }
+        
+        .card-preview iframe,
+        .card-preview object {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transform: none;
+            transform-origin: top left;
+            pointer-events: none;
+            background: transparent;
+        }
+        
+        .card-preview .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+        
+        .card-preview .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+            display: none !important;
+            z-index: -1;
+        }
+        
+        .card-preview [id^="preview-"] {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            visibility: visible;
+            display: block;
+        }
+        
+        .card-preview iframe {
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: block !important;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-preview .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-backdrop.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 1.5rem;
+            max-width: 95vw;
+            max-height: 95vh;
+            width: 1200px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .dark .modal-content {
+            background: #1e293b;
+        }
+        
+        .gradient-arayeshgah {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        /* Disable gradient in light mode */
+        html:not(.dark) .gradient-arayeshgah {
+            background: white !important;
+            background-size: auto !important;
+            animation: none !important;
+            box-shadow: none !important;
+        }
+        
+        .gradient-album {
+            background: linear-gradient(135deg, #581c87 0%, #9333ea 50%, #6b21a8 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(88, 28, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-bazi {
+            background: linear-gradient(135deg, #7c2d12 0%, #ea580c 50%, #9a3412 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(124, 45, 18, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-barname-nevisi {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 50%, #075985 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(12, 74, 110, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-teknoloji {
+            background: linear-gradient(135deg, #78350f 0%, #f59e0b 50%, #92400e 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(120, 53, 15, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-shar-keti {
+            background: linear-gradient(135deg, #065f46 0%, #10b981 50%, #047857 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(6, 95, 70, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-tarahi-sakhteman {
+            background: linear-gradient(135deg, #422006 0%, #d97706 50%, #78350f 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(66, 32, 6, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-gardeshgari {
+            background: linear-gradient(135deg, #374151 0%, #6b7280 50%, #4b5563 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(55, 65, 81, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-lebas {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-mashavarat {
+            background: linear-gradient(135deg, #7c2d12 0%, #ea580c 50%, #9a3412 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(124, 45, 18, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-mosighi {
+            background: linear-gradient(135deg, #581c87 0%, #9333ea 50%, #6b21a8 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(88, 28, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Disable ALL gradient classes in light mode */
+        html:not(.dark) .card-template[class*="gradient-"] {
+            background: white !important;
+            background-size: auto !important;
+            animation: none !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        }
+        html:not(.dark) .card-template[class*="gradient-"] *:not(.bg-green-500):not(.bg-orange-500):not(.text-white) {
+            color: #111827 !important;
+        }
+        html:not(.dark) .card-template[class*="gradient-"] h3 {
+            color: #111827 !important;
+        }
+        html:not(.dark) .card-template[class*="gradient-"] .text-blue-600 {
+            color: #2563eb !important;
+        }
+        
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .iframe-container:hover iframe {
+            transform: scale(1.02);
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card-template {
+            animation: slideInUp 0.5s ease-out backwards;
+        }
+        
+        .card-template:nth-child(1) { animation-delay: 0.05s; }
+        .card-template:nth-child(2) { animation-delay: 0.1s; }
+        .card-template:nth-child(3) { animation-delay: 0.15s; }
+        .card-template:nth-child(4) { animation-delay: 0.2s; }
+        .card-template:nth-child(5) { animation-delay: 0.25s; }
+        .card-template:nth-child(6) { animation-delay: 0.3s; }
+        .card-template:nth-child(7) { animation-delay: 0.35s; }
+        .card-template:nth-child(8) { animation-delay: 0.4s; }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            color: #374151;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .dark .filter-btn {
+            background: #1e293b;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
+        .filter-btn:hover {
+            background: #eff6ff;
+            border-color: #3b82f6;
+            color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+        .dark .filter-btn:hover {
+            background: #1e3a8a;
+            border-color: #60a5fa;
+            color: #93c5fd;
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            color: white;
+            border-color: #1e40af;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+            font-weight: 600;
+        }
+        .filter-btn.active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="header-fixed">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="images/blog/r.php%20(2).png" alt="وب لجندر" class="logo-image w-full h-full object-contain" id="headerLogo" onerror="this.src='images/blog/r.php (2).png';">
+            </div>
+                    <div>
+                        <h1 class="sigma-logo text-gray-900 dark:text-white">وب لجندر</h1>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">راهکارهای نوین کسب و کار</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-900 transition">خانه</a>
+                    <a href="templates.html" class="text-blue-900 font-semibold hover:text-blue-700 transition">قالب ها</a>
+                    <a href="modules-standalone.html" class="text-gray-600 hover:text-blue-900 transition">ماژول ها</a>
+                    <a href="index.html#blog" class="text-gray-600 hover:text-blue-900 transition">وبلاگ</a>
+                    <a href="index.html#comments" class="text-gray-600 hover:text-blue-900 transition">نظرات</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-blue-900 transition">تماس با ما</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a href="user-panel.html" id="userPanelLink" class="relative w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition hidden" title="پنل کاربری">
+                        <i class="fas fa-user text-lg"></i>
+                    </a>
+                    <button id="cartButton" class="relative w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" title="سبد خرید">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span id="cartBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                    <button id="themeToggle" class="theme-toggle-btn w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" title="تغییر تم">
+                        <i class="fas fa-moon theme-icon-moon text-lg"></i>
+                        <i class="fas fa-sun theme-icon-sun text-lg hidden"></i>
+                    </button>
+                    <button class="md:hidden text-gray-600 text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8 pt-24">
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">قالب‌ها</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+                مجموعه‌ای از قالب‌های آماده و حرفه‌ای برای پروژه‌های شما
+            </p>
+        </header>
+
+        <!-- Filters -->
+        <div class="mb-8">
+            <!-- Search Bar -->
+            <div class="mb-6">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="🔍 جستجو در قالب‌ها..." 
+                        class="w-full px-5 py-4 pl-12 border-2 border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all shadow-sm font-medium"
+                    >
+                    <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                    <i class="fas fa-filter text-blue-600 dark:text-blue-400"></i>
+                    دسته‌بندی‌ها
+                </h3>
+                <div class="flex flex-wrap gap-2.5" id="categoryFilters">
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all active" data-category="all">
+                        <i class="fas fa-th mr-1.5"></i>همه
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="ارایشگاه">💇 ارایشگاه</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="البوم">📸 البوم</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="بازی">🎮 بازی</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="برنامه نویسی">💻 برنامه نویسی</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="تکنولوژِی">🔬 تکنولوژی</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="شرکتی">🏢 شرکتی</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="خانه">🏠 خانه</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="گردشگری">✈️ گردشگری</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="لباس">👕 لباس</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="مشاوره">💼 مشاوره</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="موسیقی">🎵 موسیقی</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsCount" class="mb-6 text-base text-gray-600 dark:text-gray-300 font-semibold bg-blue-50 dark:bg-blue-900/20 px-4 py-2.5 rounded-lg inline-flex items-center gap-2 border border-blue-200 dark:border-blue-800/50 shadow-sm">
+            <i class="fas fa-info-circle text-blue-600 dark:text-blue-400"></i>
+            <span></span>
+        </div>
+
+        <!-- Templates Grid -->
+        <div id="templatesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+        <!-- Pagination -->
+        <div id="paginationContainer" class="mt-8 flex items-center justify-center gap-2 flex-wrap"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="templateModal" class="modal-backdrop" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                <h2 id="modalTitle" class="text-2xl font-bold"></h2>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-3xl font-bold">&times;</button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6">
+                <!-- Iframe Preview -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-3">پیش‌نمایش:</h3>
+                    <div class="iframe-container">
+                        <iframe id="templateIframe" src="" frameborder="0"></iframe>
+                    </div>
+                </div>
+                <!-- Template Info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
+                        <h4 class="font-semibold mb-2">📁 دسته‌بندی:</h4>
+                        <p id="modalCategory" class="text-lg font-bold text-blue-600 dark:text-blue-400"></p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
+                        <h4 class="font-semibold mb-2">📦 حجم فایل:</h4>
+                        <p id="modalSize" class="text-lg font-bold text-blue-600 dark:text-blue-400"></p>
+                    </div>
+                </div>
+                <!-- Description -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl mb-6">
+                    <h4 class="font-semibold mb-2">📝 توضیحات:</h4>
+                    <p id="modalDescription" class="text-gray-700 dark:text-gray-300"></p>
+                </div>
+            </div>
+            <div class="p-6 border-t border-gray-200 dark:border-gray-700 flex gap-4 items-center">
+                <button id="modalAddToCartBtn" class="flex-1 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-semibold text-lg transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="addToCartText">افزودن به سبد خرید</span>
+                </button>
+                <span id="templatePrice" class="px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-xl font-bold text-lg whitespace-nowrap"></span>
+                <button id="modalDownloadBtn" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold text-lg transition-all hover:scale-105 flex items-center justify-center gap-2" style="display: none;">
+                    <i class="fas fa-download"></i>
+                    دانلود
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scan templates folder and build templates array
+        let templates = [
+            {
+                id: "paid-arayeshgah-templatemo_585_barber_shop",
+                title: "قالب آرایشگاه",
+                category: "ارایشگاه",
+                categoryName: "ارایشگاه",
+                htmlPath: "template/پولی/ارایشگاه/templatemo_585_barber_shop/index.html",
+                folderPath: "template/پولی/ارایشگاه/templatemo_585_barber_shop",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب حرفه‌ای برای آرایشگاه و سالن زیبایی"
+            },
+            {
+                id: "paid-album-templatemo_556_catalog_z",
+                title: "قالب گالری تصاویر",
+                category: "البوم",
+                categoryName: "البوم",
+                htmlPath: "template/پولی/البوم/templatemo_556_catalog_z/index.html",
+                folderPath: "template/پولی/البوم/templatemo_556_catalog_z",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب گالری تصاویر و آلبوم عکس"
+            },
+            {
+                id: "paid-album-templatemo_595_3d_coverflow",
+                title: "گالری 3D",
+                category: "البوم",
+                categoryName: "البوم",
+                htmlPath: "template/پولی/البوم/templatemo_595_3d_coverflow/index.html",
+                folderPath: "template/پولی/البوم/templatemo_595_3d_coverflow",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "گالری تصاویر با افکت 3D"
+            },
+            {
+                id: "paid-album-templatemo_598_sleeky_pro",
+                title: "گالری اسلیکی",
+                category: "البوم",
+                categoryName: "البوم",
+                htmlPath: "template/پولی/البوم/templatemo_598_sleeky_pro/index.html",
+                folderPath: "template/پولی/البوم/templatemo_598_sleeky_pro",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب گالری تصاویر مدرن"
+            },
+            {
+                id: "paid-bazi-templatemo_579_cyborg_gaming",
+                title: "قالب بازی",
+                category: "بازی",
+                categoryName: "بازی",
+                htmlPath: "template/پولی/بازی/templatemo_579_cyborg_gaming/index.html",
+                folderPath: "template/پولی/بازی/templatemo_579_cyborg_gaming",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب حرفه‌ای برای سایت‌های بازی"
+            },
+            {
+                id: "paid-barname-nevisi-templatemo_586_scholar",
+                title: "قالب برنامه نویسی",
+                category: "برنامه نویسی",
+                categoryName: "برنامه نویسی",
+                htmlPath: "template/پولی/برنامه نویسی/templatemo_586_scholar/index.html",
+                folderPath: "template/پولی/برنامه نویسی/templatemo_586_scholar",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب برای سایت‌های برنامه نویسی و آموزشی"
+            },
+            {
+                id: "paid-teknoloji-magazine-layout",
+                title: "قالب مجله",
+                category: "تکنولوژِی",
+                categoryName: "تکنولوژی",
+                htmlPath: "template/پولی/تکنولوژِی/magazine layout/index.html",
+                folderPath: "template/پولی/تکنولوژِی/magazine layout",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS"],
+                description: "قالب مجله و خبر"
+            },
+            {
+                id: "paid-teknoloji-templatemo_577_liberty_market",
+                title: "قالب مارکت",
+                category: "تکنولوژِی",
+                categoryName: "تکنولوژی",
+                htmlPath: "template/پولی/تکنولوژِی/templatemo_577_liberty_market/index.html",
+                folderPath: "template/پولی/تکنولوژِی/templatemo_577_liberty_market",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب مارکت و فروشگاه آنلاین"
+            },
+            {
+                id: "paid-teknoloji-templatemo_597_neural_glass",
+                title: "قالب تکنولوژی",
+                category: "تکنولوژِی",
+                categoryName: "تکنولوژی",
+                htmlPath: "template/پولی/تکنولوژِی/templatemo_597_neural_glass/index.html",
+                folderPath: "template/پولی/تکنولوژِی/templatemo_597_neural_glass",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب مدرن برای سایت‌های تکنولوژی"
+            },
+            {
+                id: "paid-shar-keti-sigma-main",
+                title: "قالب شرکتی سیگما",
+                category: "شرکتی",
+                categoryName: "شرکتی",
+                htmlPath: "template/پولی/شرکتی/sigma-main/dist/index.html",
+                folderPath: "template/پولی/شرکتی/sigma-main",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب شرکتی حرفه‌ای"
+            },
+            {
+                id: "paid-shar-keti-templatemo_575_leadership_event",
+                title: "قالب رویداد",
+                category: "شرکتی",
+                categoryName: "شرکتی",
+                htmlPath: "template/پولی/شرکتی/templatemo_575_leadership_event/index.html",
+                folderPath: "template/پولی/شرکتی/templatemo_575_leadership_event",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب برای رویدادها و همایش‌ها"
+            },
+            {
+                id: "paid-khane-templatemo_564_plot_listing",
+                title: "قالب املاک",
+                category: "خانه",
+                categoryName: "خانه",
+                htmlPath: "template/پولی/خانه/templatemo_564_plot_listing/index.html",
+                folderPath: "template/پولی/خانه/templatemo_564_plot_listing",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب برای سایت‌های املاک و ساختمان"
+            },
+            {
+                id: "paid-khane-untree-co-furni",
+                title: "قالب فروشگاه مبلمان",
+                category: "خانه",
+                categoryName: "خانه",
+                htmlPath: "template/پولی/خانه/untree.co-furni/index.html",
+                folderPath: "template/پولی/خانه/untree.co-furni",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب فروشگاه آنلاین مبلمان و دکوراسیون"
+            },
+            {
+                id: "paid-gardeshgari-templatemo_576_snapx_photography",
+                title: "قالب عکاسی",
+                category: "گردشگری",
+                categoryName: "گردشگری",
+                htmlPath: "template/پولی/گردشگری/templatemo_576_snapx_photography/index.html",
+                folderPath: "template/پولی/گردشگری/templatemo_576_snapx_photography",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب برای عکاسان و گردشگران"
+            },
+            {
+                id: "paid-gardeshgari-templatemo_580_woox_travel",
+                title: "قالب سفر",
+                category: "گردشگری",
+                categoryName: "گردشگری",
+                htmlPath: "template/پولی/گردشگری/templatemo_580_woox_travel/index.html",
+                folderPath: "template/پولی/گردشگری/templatemo_580_woox_travel",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب برای آژانس‌های مسافرتی"
+            },
+            {
+                id: "paid-gardeshgari-jadoo",
+                title: "قالب مسافرتی جادو",
+                category: "گردشگری",
+                categoryName: "گردشگری",
+                htmlPath: "template/پولی/گردشگری/jadoo/public/index.html",
+                folderPath: "template/پولی/گردشگری/jadoo",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب مدرن برای آژانس‌های مسافرتی و تور"
+            },
+            {
+                id: "paid-lebas-templatemo_559_zay_shop",
+                title: "قالب فروشگاه لباس",
+                category: "لباس",
+                categoryName: "لباس",
+                htmlPath: "template/پولی/لباس/templatemo_559_zay_shop/index.html",
+                folderPath: "template/پولی/لباس/templatemo_559_zay_shop",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب فروشگاه آنلاین لباس"
+            },
+            {
+                id: "paid-lebas-kaira-free-fashion-store",
+                title: "قالب فروشگاه مد کایرا",
+                category: "لباس",
+                categoryName: "لباس",
+                htmlPath: "template/پولی/لباس/kaira-free-fashion-store/kaira-free-fashion-store/index.html",
+                folderPath: "template/پولی/لباس/kaira-free-fashion-store/kaira-free-fashion-store",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب فروشگاه مد و فشن"
+            },
+            {
+                id: "paid-lebas-uniclub-free-website-template",
+                title: "قالب یونی‌کلاب",
+                category: "لباس",
+                categoryName: "لباس",
+                htmlPath: "template/پولی/لباس/uniclub-free-website-template/index.html",
+                folderPath: "template/پولی/لباس/uniclub-free-website-template",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب فروشگاه لباس و مد"
+            },
+            {
+                id: "paid-mashavarat-templatemo_578_first_portfolio",
+                title: "قالب پورتفولیو",
+                category: "مشاوره",
+                categoryName: "مشاوره",
+                htmlPath: "template/پولی/مشاوره/templatemo_578_first_portfolio/index.html",
+                folderPath: "template/پولی/مشاوره/templatemo_578_first_portfolio",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب پورتفولیو شخصی"
+            },
+            {
+                id: "paid-mashavarat-templatemo_581_kind_heart_charity",
+                title: "قالب خیریه",
+                category: "مشاوره",
+                categoryName: "مشاوره",
+                htmlPath: "template/پولی/مشاوره/templatemo_581_kind_heart_charity/index.html",
+                folderPath: "template/پولی/مشاوره/templatemo_581_kind_heart_charity",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب برای سازمان‌های خیریه"
+            },
+            {
+                id: "paid-mosighi-templatemo_583_festava_live",
+                title: "قالب موسیقی",
+                category: "موسیقی",
+                categoryName: "موسیقی",
+                htmlPath: "template/پولی/موسیقی/templatemo_583_festava_live/index.html",
+                folderPath: "template/پولی/موسیقی/templatemo_583_festava_live",
+                pricingType: "paid",
+                price: 2500000,
+                size: 0,
+                languages: ["HTML", "CSS", "JavaScript"],
+                description: "قالب برای رویدادهای موسیقی و کنسرت"
+            }
+        ];
+
+        // Sync with admin panel templates
+        function syncAdminTemplates() {
+            try {
+                // Load admin templates from localStorage
+                const adminTemplates = JSON.parse(localStorage.getItem('adminTemplates') || '[]');
+                const deletedTemplates = JSON.parse(localStorage.getItem('deletedTemplates') || '[]');
+                
+                // Remove deleted templates (modify array in place)
+                const filteredTemplates = templates.filter(t => !deletedTemplates.includes(t.id));
+                templates.length = 0;
+                templates.push(...filteredTemplates);
+                
+                // Update or add admin templates
+                adminTemplates.forEach(adminTemplate => {
+                    const existingIndex = templates.findIndex(t => t.id === adminTemplate.id);
+                    
+                    if (existingIndex !== -1) {
+                        // Update existing template
+                        templates[existingIndex] = {
+                            ...templates[existingIndex],
+                            ...adminTemplate,
+                            title: adminTemplate.name || adminTemplate.title,
+                            category: adminTemplate.categoryName || adminTemplate.category,
+                            categoryName: adminTemplate.categoryName || adminTemplate.category
+                        };
+                    } else {
+                        // Add new template (only if it has htmlPath)
+                        if (adminTemplate.htmlPath) {
+                            templates.push({
+                                id: adminTemplate.id,
+                                title: adminTemplate.name || adminTemplate.title || 'قالب جدید',
+                                category: adminTemplate.categoryName || adminTemplate.category || 'عمومی',
+                                categoryName: adminTemplate.categoryName || adminTemplate.category || 'عمومی',
+                                htmlPath: adminTemplate.htmlPath,
+                                folderPath: adminTemplate.folderPath || (adminTemplate.htmlPath ? adminTemplate.htmlPath.substring(0, adminTemplate.htmlPath.lastIndexOf('/')) : ''),
+                                pricingType: adminTemplate.pricingType || 'free',
+                                price: adminTemplate.price || 0,
+                                size: adminTemplate.size || 0,
+                                languages: adminTemplate.languages || ['HTML', 'CSS', 'JS'],
+                                description: adminTemplate.description || ''
+                            });
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error syncing admin templates:', error);
+            }
+        }
+        
+        // Sync templates before using them
+        syncAdminTemplates();
+        
+        // Ensure templates array exists
+        if (!templates || templates.length === 0) {
+            console.warn('Templates array is empty, initializing...');
+            templates = [];
+        }
+        
+        let filteredTemplates = [...templates];
+        
+        // Function to render category filters from localStorage
+        function renderCategoryFilters() {
+            const categoryFiltersContainer = document.getElementById('categoryFilters');
+            if (!categoryFiltersContainer) return;
+            
+            // Get categories from localStorage (managed by admin panel)
+            const storedCategories = JSON.parse(localStorage.getItem('templateCategories') || '[]');
+            
+            // Get unique categories from templates array as fallback
+            const categoriesFromTemplates = [...new Set(templates.map(t => t.categoryName || t.category).filter(Boolean))];
+            
+            // Combine both sources, prioritize stored categories
+            const allCategoryNames = [...new Set([
+                ...storedCategories.map(c => c.name),
+                ...categoriesFromTemplates
+            ])];
+            
+            // Icon/Emoji mapping for categories
+            const categoryIcons = {
+                "ارایشگاه": "💇",
+                "البوم": "📸",
+                "بازی": "🎮",
+                "برنامه نویسی": "💻",
+                "تکنولوژِی": "🔬",
+                "تکنولوژی": "🔬",
+                "شرکتی": "🏢",
+                "خانه": "🏠",
+                "گردشگری": "✈️",
+                "لباس": "👕",
+                "مشاوره": "💼",
+                "موسیقی": "🎵"
+            };
+            
+            // Build filter buttons HTML
+            let filtersHTML = `
+                <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all active" data-category="all">
+                    <i class="fas fa-th mr-1.5"></i>همه
+                </button>
+            `;
+            
+            allCategoryNames.forEach(catName => {
+                const icon = categoryIcons[catName] || '🏷️';
+                filtersHTML += `
+                    <button class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-category="${catName}">
+                        ${icon} ${catName}
+                    </button>
+                `;
+            });
+            
+            categoryFiltersContainer.innerHTML = filtersHTML;
+            
+            // Re-attach event listeners
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('active', 'bg-blue-500', 'text-white', 'border-blue-500');
+                    });
+                    btn.classList.add('active', 'bg-blue-500', 'text-white', 'border-blue-500');
+                    selectedCategory = btn.dataset.category;
+                    filterTemplates();
+                });
+            });
+        }
+        
+        // Listen for updates from admin panel
+        window.addEventListener('templatesUpdated', () => {
+            syncAdminTemplates();
+            filteredTemplates = [...templates];
+            filterTemplates();
+        });
+        
+        // Listen for category updates from admin panel
+        window.addEventListener('templateCategoriesUpdated', () => {
+            renderCategoryFilters();
+        });
+        
+        // Also listen to storage events (for cross-tab sync)
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'templateCategories') {
+                renderCategoryFilters();
+            }
+        });
+
+        // Helper function to format price in Rials
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        let selectedCategory = 'all';
+        let searchQuery = '';
+        let currentPage = 1;
+        const itemsPerPage = 20;
+
+        const categoryGradients = {
+            "ارایشگاه": 'gradient-arayeshgah',
+            "البوم": 'gradient-album',
+            "بازی": 'gradient-bazi',
+            "برنامه نویسی": 'gradient-barname-nevisi',
+            "تکنولوژِی": 'gradient-teknoloji',
+            "شرکتی": 'gradient-shar-keti',
+            "خانه": 'gradient-tarahi-sakhteman',
+            "گردشگری": 'gradient-gardeshgari',
+            "لباس": 'gradient-lebas',
+            "مشاوره": 'gradient-mashavarat',
+            "موسیقی": 'gradient-mosighi',
+        };
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return "0 B";
+            const k = 1024;
+            const sizes = ["B", "KB", "MB", "GB"];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
+        }
+
+        // Function to load iframe content with retry mechanism
+        function setupIframe(iframeId, src, loadingId) {
+            const iframe = document.getElementById(iframeId);
+            const loader = document.getElementById(loadingId);
+            
+            if (!iframe) {
+                return;
+            }
+            
+            if (!loader) {
+            }
+            
+            // Ensure iframe and container are visible from start
+            const previewContainer = iframe.parentElement;
+            if (previewContainer) {
+                previewContainer.style.visibility = 'visible';
+                previewContainer.style.display = 'block';
+                previewContainer.style.opacity = '1';
+                previewContainer.style.zIndex = '1';
+            }
+            iframe.style.visibility = 'visible';
+            iframe.style.opacity = '1';
+            iframe.style.display = 'block';
+            iframe.style.zIndex = '1';
+            
+            // Try to load iframe
+            try {
+                // Only set src if it's different to avoid reloading
+                if (iframe.src !== src) {
+                    iframe.src = src;
+                }
+            } catch (e) {
+                if (loader) {
+                    loader.innerHTML = '<div style="text-align:center;padding:20px;color:white"><div style="font-size:48px;margin-bottom:10px">⚠️</div><div style="font-size:12px">خطا در بارگذاری</div></div>';
+                }
+                return;
+            }
+            
+            // Hide loader function - faster response
+            const hideLoader = () => {
+                if (loader && !loader.classList.contains('hidden')) {
+                    loader.classList.add('hidden');
+                    loader.style.display = 'none';
+                    loader.style.visibility = 'hidden';
+                    loader.style.opacity = '0';
+                    loader.style.zIndex = '-1';
+                    // Ensure iframe and preview container are visible
+                    const previewContainer = iframe.parentElement;
+                    if (previewContainer) {
+                        previewContainer.style.visibility = 'visible';
+                        previewContainer.style.display = 'block';
+                        previewContainer.style.opacity = '1';
+                        previewContainer.style.zIndex = '1';
+                    }
+                    iframe.style.visibility = 'visible';
+                    iframe.style.opacity = '1';
+                    iframe.style.display = 'block';
+                    iframe.style.zIndex = '1';
+                }
+            };
+            
+            // Try to hide loader immediately
+            try {
+                if (iframe.contentDocument || iframe.contentWindow) {
+                    hideLoader();
+                }
+            } catch (e) {
+                // Cross-origin - will hide on load event
+            }
+            
+            // Fallback timeout - reduced from 2000ms to 500ms for faster response
+            let loadTimeout = setTimeout(() => {
+                hideLoader();
+            }, 500);
+            
+            // Handle iframe load - hide loader immediately when loaded
+            iframe.onload = () => {
+                clearTimeout(loadTimeout);
+                // Hide loader immediately with force
+                if (loader) {
+                    loader.classList.add('hidden');
+                    loader.style.display = 'none';
+                    loader.style.visibility = 'hidden';
+                    loader.style.opacity = '0';
+                    loader.style.zIndex = '-1';
+                }
+                // Ensure iframe and preview container are visible
+                const previewContainer = iframe.parentElement;
+                if (previewContainer) {
+                    previewContainer.style.visibility = 'visible';
+                    previewContainer.style.display = 'block';
+                    previewContainer.style.opacity = '1';
+                    previewContainer.style.zIndex = '1';
+                }
+                iframe.style.visibility = 'visible';
+                iframe.style.opacity = '1';
+                iframe.style.display = 'block';
+                iframe.style.zIndex = '1';
+            };
+            
+            iframe.onerror = () => {
+                clearTimeout(loadTimeout);
+                if (loader) {
+                    loader.innerHTML = '<div style="text-align:center;padding:20px;color:white"><div style="font-size:48px;margin-bottom:10px">👁️</div><div style="font-size:12px">برای مشاهده پیش‌نمایش<br/>روی کارت کلیک کنید</div></div>';
+                    setTimeout(() => {
+                        if (loader) loader.classList.add('hidden');
+                    }, 3000);
+                }
+            };
+            
+            // Also check after a short delay if iframe loaded (faster check - reduced to 300ms)
+            setTimeout(() => {
+                try {
+                    if (iframe.contentDocument || iframe.contentWindow) {
+                        hideLoader();
+                    }
+                } catch (e) {
+                    // Cross-origin or file:// blocked - hide loader after short delay
+                    if (loader && !loader.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            hideLoader();
+                        }, 200);
+                    }
+                }
+            }, 300);
+            
+            // Fallback: Force hide loader after 800ms (reduced from 1500ms)
+            setTimeout(() => {
+                hideLoader();
+            }, 800);
+        }
+
+        window.openModal = function(template) {
+            const modal = document.getElementById('templateModal');
+            const title = document.getElementById('modalTitle');
+            const iframe = document.getElementById('templateIframe');
+            const category = document.getElementById('modalCategory');
+            const size = document.getElementById('modalSize');
+            const description = document.getElementById('modalDescription');
+            const downloadBtn = document.getElementById('modalDownloadBtn');
+
+            title.textContent = template.title;
+            
+            // Build full URL for modal iframe
+            let modalIframeSrc = '';
+            if (window.location.protocol === 'file:') {
+                let currentPath = window.location.pathname;
+                // Handle Windows paths
+                if (window.location.href.includes('///')) {
+                    currentPath = window.location.href.replace('file:///', '');
+                } else if (window.location.href.includes('//')) {
+                    currentPath = window.location.href.replace('file://', '');
+                }
+                if (currentPath.startsWith('/')) {
+                    currentPath = currentPath.substring(1);
+                }
+                const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+                const templatePath = template.htmlPath.replace(/\\/g, '/');
+                if (basePath.match(/^[A-Za-z]:/)) {
+                    modalIframeSrc = 'file:///' + basePath.replace(/\\/g, '/') + '/' + templatePath;
+                } else {
+                    modalIframeSrc = 'file:///' + basePath + '/' + templatePath;
+                }
+            } else {
+                const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+                modalIframeSrc = new URL(template.htmlPath.replace(/\\/g, '/'), baseUrl + '/').href;
+            }
+            
+            iframe.src = modalIframeSrc;
+            
+            category.textContent = template.categoryName;
+            size.textContent = formatFileSize(template.size);
+            description.textContent = template.description;
+
+            // Update price display
+            const priceElement = document.getElementById('templatePrice');
+            if (priceElement) {
+            if (template.pricingType === 'free') {
+                    priceElement.textContent = 'رایگان';
+                    priceElement.className = 'px-4 py-3 bg-green-100 dark:bg-green-900 text-green-900 dark:text-green-100 rounded-xl font-bold text-lg whitespace-nowrap';
+                    // Show download button for free templates
+                    if (downloadBtn) {
+                        downloadBtn.style.display = 'flex';
+                downloadBtn.onclick = () => downloadTemplate(template);
+                    }
+            } else {
+                    priceElement.textContent = `${formatPrice(template.price)} ریال`;
+                    priceElement.className = 'px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-xl font-bold text-lg whitespace-nowrap';
+                    // Hide download button for paid templates
+                    if (downloadBtn) {
+                        downloadBtn.style.display = 'none';
+                    }
+                }
+            }
+
+            // Check if template is in cart
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const isInCart = cart.some(item => item.id === template.id);
+            
+            const addToCartBtn = document.getElementById('modalAddToCartBtn');
+            const addToCartText = document.getElementById('addToCartText');
+            if (addToCartBtn) {
+                if (isInCart) {
+                    addToCartBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+                    addToCartBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+                    addToCartBtn.disabled = true;
+                    if (addToCartText) {
+                        addToCartText.textContent = 'در سبد خرید قرار دارد';
+                    }
+                    addToCartBtn.innerHTML = '<i class="fas fa-check"></i> <span id="addToCartText">در سبد خرید قرار دارد</span>';
+                } else {
+                    addToCartBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                    addToCartBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+                    addToCartBtn.disabled = false;
+                    if (addToCartText) {
+                        addToCartText.textContent = 'افزودن به سبد خرید';
+                    }
+                    addToCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> <span id="addToCartText">افزودن به سبد خرید</span>';
+                    addToCartBtn.onclick = () => addTemplateToCart(template);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeModal = function(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('templateModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            const iframe = document.getElementById('templateIframe');
+            iframe.src = '';
+        };
+
+        // Helper function to read file using fetch (works better with file://)
+        async function readFileAsync(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok && response.status !== 0) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return await response.text();
+            } catch (error) {
+                // Fallback to XMLHttpRequest if fetch fails
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'text';
+                
+                xhr.onload = function() {
+                    if (xhr.status === 0 || xhr.status === 200) {
+                        resolve(xhr.responseText);
+                    } else {
+                        reject(new Error(`HTTP ${xhr.status}: ${xhr.statusText}`));
+                    }
+                };
+                
+                xhr.onerror = function() {
+                        reject(new Error('Network error: ' + url));
+                };
+                
+                xhr.ontimeout = function() {
+                    reject(new Error('Timeout'));
+                };
+                
+                    xhr.timeout = 10000;
+                xhr.send();
+            });
+            }
+        }
+
+        // Helper function to read binary file
+        async function readBinaryFileAsync(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok && response.status !== 0) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return await response.arrayBuffer();
+            } catch (error) {
+                // Fallback to XMLHttpRequest if fetch fails
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'arraybuffer';
+                
+                xhr.onload = function() {
+                    if (xhr.status === 0 || xhr.status === 200) {
+                        resolve(xhr.response);
+                    } else {
+                        reject(new Error(`HTTP ${xhr.status}: ${xhr.statusText}`));
+                    }
+                };
+                
+                xhr.onerror = function() {
+                        reject(new Error('Network error: ' + url));
+                };
+                
+                xhr.ontimeout = function() {
+                    reject(new Error('Timeout'));
+                };
+                
+                xhr.timeout = 10000;
+                xhr.send();
+            });
+            }
+        }
+
+        async function downloadTemplate(template) {
+            if (!confirm('آیا می‌خواهید این قالب را به صورت ZIP دانلود کنید؟')) {
+                return;
+            }
+
+            try {
+                const downloadBtn = document.getElementById('modalDownloadBtn');
+                const originalText = downloadBtn.textContent;
+                downloadBtn.textContent = '⏳ در حال دانلود...';
+                downloadBtn.disabled = true;
+
+                const zip = new JSZip();
+                const basePath = template.htmlPath.substring(0, template.htmlPath.lastIndexOf('/'));
+                
+                // Build full URL for HTML file
+                let htmlUrl = '';
+                if (window.location.protocol === 'file:') {
+                    let currentPath = window.location.pathname;
+                    if (window.location.href.includes('///')) {
+                        currentPath = window.location.href.replace('file:///', '');
+                    } else if (window.location.href.includes('//')) {
+                        currentPath = window.location.href.replace('file://', '');
+                    }
+                    if (currentPath.startsWith('/')) {
+                        currentPath = currentPath.substring(1);
+                    }
+                    const baseDir = currentPath.substring(0, currentPath.lastIndexOf('/'));
+                    const templatePath = template.htmlPath.replace(/\\/g, '/');
+                    if (baseDir.match(/^[A-Za-z]:/)) {
+                        htmlUrl = 'file:///' + baseDir.replace(/\\/g, '/') + '/' + templatePath;
+                    } else {
+                        htmlUrl = 'file:///' + baseDir + '/' + templatePath;
+                    }
+                } else {
+                    const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+                    htmlUrl = new URL(template.htmlPath.replace(/\\/g, '/'), baseUrl + '/').href;
+                }
+                
+                // Read the main HTML file
+                let htmlContent = '';
+                try {
+                    htmlContent = await readFileAsync(htmlUrl);
+                    zip.file('index.html', htmlContent);
+                } catch (e) {
+                    console.error('Error reading HTML:', e);
+                    // If we can't read files, show folder path to user
+                    const folderPath = template.folderPath || basePath;
+                    const message = `متأسفانه به دلیل محدودیت‌های امنیتی مرورگر، امکان دانلود خودکار فایل‌ها وجود ندارد.\n\nلطفاً فولدر قالب را به صورت دستی کپی کنید:\n\n${folderPath}\n\nیا از یک سرور محلی (مثل Live Server) استفاده کنید.`;
+                    alert(message);
+                    downloadBtn.textContent = originalText;
+                    downloadBtn.disabled = false;
+                    return;
+                }
+                
+                // Parse HTML to find all linked resources
+                const parser = new DOMParser();
+                const htmlDoc = parser.parseFromString(htmlContent, 'text/html');
+                
+                // Function to resolve relative URLs
+                function resolveUrl(url, base) {
+                    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+                        return null; // Skip external URLs
+                    }
+                    
+                    if (window.location.protocol === 'file:') {
+                        let currentPath = window.location.pathname;
+                        if (window.location.href.includes('///')) {
+                            currentPath = window.location.href.replace('file:///', '');
+                        } else if (window.location.href.includes('//')) {
+                            currentPath = window.location.href.replace('file://', '');
+                        }
+                        if (currentPath.startsWith('/')) {
+                            currentPath = currentPath.substring(1);
+                        }
+                        const baseDir = currentPath.substring(0, currentPath.lastIndexOf('/'));
+                        const resolvedPath = url.startsWith('/') 
+                            ? url.substring(1)
+                            : base.replace(/\\/g, '/') + '/' + url;
+                        if (baseDir.match(/^[A-Za-z]:/)) {
+                            return 'file:///' + baseDir.replace(/\\/g, '/') + '/' + resolvedPath;
+                        } else {
+                            return 'file:///' + baseDir + '/' + resolvedPath;
+                        }
+                    } else {
+                        return new URL(url, base + '/').href;
+                    }
+                }
+                
+                // Find and download all CSS files
+                const cssLinks = htmlDoc.querySelectorAll('link[rel="stylesheet"]');
+                const downloadedFiles = new Set();
+                
+                for (const link of cssLinks) {
+                    const href = link.getAttribute('href');
+                    if (!href || href.startsWith('http://') || href.startsWith('https://') || href.startsWith('data:')) {
+                        continue;
+                    }
+                    
+                    const cssUrl = resolveUrl(href, basePath);
+                    if (!cssUrl || downloadedFiles.has(cssUrl)) continue;
+                    
+                    try {
+                        const cssContent = await readFileAsync(cssUrl);
+                        const cssFileName = href.split('/').pop() || 'style.css';
+                        zip.file(cssFileName, cssContent);
+                        downloadedFiles.add(cssUrl);
+                        
+                        // Also check for @import in CSS
+                        const importMatches = cssContent.match(/@import\s+['"]([^'"]+)['"]/g);
+                        if (importMatches) {
+                            for (const importMatch of importMatches) {
+                                const importPath = importMatch.match(/['"]([^'"]+)['"]/)[1];
+                                const importUrl = resolveUrl(importPath, cssUrl.substring(0, cssUrl.lastIndexOf('/')));
+                                if (importUrl && !downloadedFiles.has(importUrl)) {
+                                    try {
+                                        const importContent = await readFileAsync(importUrl);
+                                        const importFileName = importPath.split('/').pop() || 'import.css';
+                                        zip.file(importFileName, importContent);
+                                        downloadedFiles.add(importUrl);
+                                    } catch (e) {
+                                        console.warn('Could not read imported CSS:', importPath);
+                                    }
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('Could not read CSS:', href, e);
+                    }
+                }
+                
+                // Find and download all JS files
+                const jsScripts = htmlDoc.querySelectorAll('script[src]');
+                for (const script of jsScripts) {
+                    const src = script.getAttribute('src');
+                    if (!src || src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+                        continue;
+                    }
+                    
+                    const jsUrl = resolveUrl(src, basePath);
+                    if (!jsUrl || downloadedFiles.has(jsUrl)) continue;
+                    
+                    try {
+                        const jsContent = await readFileAsync(jsUrl);
+                        const jsFileName = src.split('/').pop() || 'script.js';
+                        zip.file(jsFileName, jsContent);
+                        downloadedFiles.add(jsUrl);
+                    } catch (e) {
+                        console.warn('Could not read JS:', src, e);
+                    }
+                }
+                
+                // Find and download images
+                const images = htmlDoc.querySelectorAll('img[src]');
+                for (const img of images) {
+                    const src = img.getAttribute('src');
+                    if (!src || src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+                        continue;
+                    }
+                    
+                    const imgUrl = resolveUrl(src, basePath);
+                    if (!imgUrl || downloadedFiles.has(imgUrl)) continue;
+                    
+                    try {
+                        const imgData = await readBinaryFileAsync(imgUrl);
+                        const imgFileName = src.split('/').pop() || 'image.png';
+                        zip.file(imgFileName, imgData);
+                        downloadedFiles.add(imgUrl);
+                    } catch (e) {
+                        console.warn('Could not read image:', src, e);
+                    }
+                }
+                
+                // Also check for background images in CSS
+                for (const cssContent of Array.from(downloadedFiles).filter(url => url.endsWith('.css'))) {
+                    try {
+                        const content = await readFileAsync(cssContent);
+                        const bgMatches = content.match(/url\(['"]?([^'")]+)['"]?\)/g);
+                        if (bgMatches) {
+                            for (const bgMatch of bgMatches) {
+                                const bgPath = bgMatch.match(/url\(['"]?([^'")]+)['"]?\)/)[1];
+                                if (bgPath.startsWith('http://') || bgPath.startsWith('https://') || bgPath.startsWith('data:')) {
+                                    continue;
+                                }
+                                const bgUrl = resolveUrl(bgPath, cssContent.substring(0, cssContent.lastIndexOf('/')));
+                                if (bgUrl && !downloadedFiles.has(bgUrl)) {
+                                    try {
+                                        const bgData = await readBinaryFileAsync(bgUrl);
+                                        const bgFileName = bgPath.split('/').pop() || 'bg.png';
+                                        zip.file(bgFileName, bgData);
+                                        downloadedFiles.add(bgUrl);
+                                    } catch (e) {
+                                        console.warn('Could not read background image:', bgPath);
+                                    }
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        // Skip if CSS already processed
+                    }
+                }
+                
+                // Generate zip file
+                const zipBlob = await zip.generateAsync({ 
+                    type: 'blob',
+                    compression: 'DEFLATE',
+                    compressionOptions: { level: 6 }
+                });
+                
+                // Create download link
+                const url = URL.createObjectURL(zipBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `${template.title.replace(/[^a-z0-9\u0600-\u06FF]/gi, '_')}.zip`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                // Reset button
+                downloadBtn.textContent = originalText;
+                downloadBtn.disabled = false;
+                
+                alert('✅ دانلود با موفقیت انجام شد!');
+            } catch (error) {
+                console.error('Error downloading:', error);
+                alert('❌ خطا در دانلود: ' + error.message);
+                const downloadBtn = document.getElementById('modalDownloadBtn');
+                downloadBtn.textContent = '⬇️ دانلود رایگان';
+                downloadBtn.disabled = false;
+            }
+        }
+
+        function purchaseTemplate(template) {
+                if (confirm(`آیا می‌خواهید این قالب را به قیمت ${formatPrice(template.price)} ریال خریداری کنید؟`)) {
+                alert('خرید با موفقیت انجام شد! اکنون می‌توانید قالب را دانلود کنید.');
+                // Enable download after purchase
+                const downloadBtn = document.getElementById('modalDownloadBtn');
+                downloadBtn.style.display = 'block';
+                downloadBtn.textContent = '⬇️ دانلود';
+                downloadBtn.onclick = () => downloadTemplate(template);
+            }
+        }
+
+        // Shopping Cart Functionality
+        function addTemplateToCart(template) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            const existingItem = cart.find(item => item.id === template.id);
+            
+            if (existingItem) {
+                alert('این قالب قبلاً به سبد خرید اضافه شده است!');
+                return;
+            }
+            
+            cart.push({
+                id: template.id,
+                type: 'template',
+                name: template.title,
+                description: template.description,
+                price: template.price || 0,
+                pricingType: template.pricingType,
+                quantity: 1
+            });
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update button state
+            const addToCartBtn = document.getElementById('modalAddToCartBtn');
+            if (addToCartBtn) {
+                addToCartBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+                addToCartBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+                addToCartBtn.disabled = true;
+                addToCartBtn.innerHTML = '<i class="fas fa-check"></i> <span id="addToCartText">در سبد خرید قرار دارد</span>';
+            }
+            
+            alert(`${template.title} به سبد خرید اضافه شد!`);
+        }
+
+        function filterTemplates() {
+            // Re-sync before filtering to get latest changes
+            syncAdminTemplates();
+            
+            // Ensure templates array is populated
+            if (!templates || templates.length === 0) {
+                console.warn('No templates found, checking localStorage...');
+                const storedTemplates = JSON.parse(localStorage.getItem('adminTemplates') || '[]');
+                if (storedTemplates.length > 0) {
+                    templates = storedTemplates.map(t => ({
+                        id: t.id,
+                        title: t.name || t.title,
+                        category: t.categoryName || t.category,
+                        categoryName: t.categoryName || t.category,
+                        htmlPath: t.htmlPath,
+                        folderPath: t.folderPath,
+                        pricingType: t.pricingType || 'free',
+                        price: t.price || 0,
+                        size: t.size || 0,
+                        languages: t.languages || ['HTML', 'CSS', 'JS']
+                    }));
+                }
+            }
+            
+            filteredTemplates = templates.filter(template => {
+                const matchesCategory = selectedCategory === 'all' || 
+                    template.category === selectedCategory || 
+                    template.categoryName === selectedCategory;
+                const matchesSearch = !searchQuery || 
+                    (template.title && template.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                    (template.categoryName && template.categoryName.toLowerCase().includes(searchQuery.toLowerCase()));
+                return matchesCategory && matchesSearch;
+            });
+
+            // Reset to first page when filtering
+            currentPage = 1;
+            renderTemplates();
+        }
+
+        function renderTemplates() {
+            const grid = document.getElementById('templatesGrid');
+            const count = document.getElementById('resultsCount');
+            
+            const countSpan = count ? count.querySelector('span') : null;
+            if (!filteredTemplates || filteredTemplates.length === 0) {
+                grid.innerHTML = '<p class="col-span-full text-center text-gray-500 dark:text-gray-400 py-16 text-xl font-semibold bg-gray-100 dark:bg-gray-900/50 px-8 py-6 rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-lg">🔍 هیچ قالبی یافت نشد</p>';
+                if (countSpan) countSpan.textContent = '';
+                const paginationContainer = document.getElementById('paginationContainer');
+                if (paginationContainer) paginationContainer.innerHTML = '';
+            } else {
+                // Calculate pagination
+                const totalPages = Math.ceil(filteredTemplates.length / itemsPerPage);
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const currentTemplates = filteredTemplates.slice(startIndex, endIndex);
+
+                grid.innerHTML = currentTemplates.map((template, index) => {
+                    const gradientClass = categoryGradients[template.category] || 'gradient-arayeshgah';
+                    const badgeColor = template.pricingType === 'free' 
+                        ? 'bg-green-500 text-white' 
+                        : 'bg-orange-500 text-white';
+                    const badgeText = template.pricingType === 'free' 
+                        ? '🆓 رایگان' 
+                        : `💳 ${formatPrice(template.price)} ریال`;
+
+                    const templateId = `template-${template.id.replace(/[^a-z0-9]/gi, '-')}`;
+
+                    return `
+                        <div class="card-template ${gradientClass} rounded-xl p-5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all" style="animation-delay: ${index * 0.05}s" onclick='openModal(${JSON.stringify(template)})'>
+                            <div class="card-content">
+                                <div class="card-preview">
+                                    <div class="loading-overlay" id="loading-${templateId}">
+                                        <div class="loading-spinner"></div>
+                                    </div>
+                                    <div id="preview-${templateId}" style="width: 100%; height: 100%; position: relative; z-index: 0; visibility: visible; display: block;">
+                                        <iframe 
+                                            id="${templateId}"
+                                            loading="eager"
+                                            style="width: 100%; height: 100%; transform: none; transform-origin: top left; pointer-events: none; border: none; background: transparent; visibility: visible; opacity: 1; display: block;"
+                                        ></iframe>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="text-lg font-bold text-gray-900 dark:text-white flex-1">${template.title}</h3>
+                                        <span class="${badgeColor} px-3 py-1 rounded-full text-xs font-semibold ml-2 whitespace-nowrap">${badgeText}</span>
+                                </div>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="text-xs text-gray-600 dark:text-gray-300 font-medium">دسته‌بندی:</span>
+                                        <span class="text-xs text-blue-600 dark:text-blue-400 font-semibold bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">${template.categoryName}</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-xs pt-3 border-t border-gray-100 dark:border-gray-700">
+                                    <span class="flex items-center gap-1.5 text-gray-600 dark:text-gray-400">
+                                        <i class="fas fa-weight text-gray-400"></i>
+                                        <span>${formatFileSize(template.size)}</span>
+                                    </span>
+                                    <span class="flex items-center gap-1.5 text-gray-600 dark:text-gray-400">
+                                        <i class="fas fa-code text-gray-400"></i>
+                                        <span>${template.languages.join(' • ')}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                if (countSpan) countSpan.textContent = `${filteredTemplates.length} قالب یافت شد`;
+                
+                // Render pagination
+                renderPagination(totalPages);
+                
+                // Setup all iframes immediately after rendering
+                currentTemplates.forEach((template, index) => {
+                    // Load first 8 iframes immediately, rest with small delay
+                    const delay = index < 8 ? 0 : (index - 8) * 5;
+                    setTimeout(() => {
+                        const templateId = `template-${template.id.replace(/[^a-z0-9]/gi, '-')}`;
+                        const iframe = document.getElementById(templateId);
+                        const loader = document.getElementById(`loading-${templateId}`);
+                        
+                        if (iframe && loader) {
+                            // Build iframe src
+                            let iframeSrc = '';
+                            if (window.location.protocol === 'file:') {
+                                let currentPath = window.location.pathname;
+                                if (window.location.href.includes('///')) {
+                                    currentPath = window.location.href.replace('file:///', '');
+                                } else if (window.location.href.includes('//')) {
+                                    currentPath = window.location.href.replace('file://', '');
+                                }
+                                if (currentPath.startsWith('/')) {
+                                    currentPath = currentPath.substring(1);
+                                }
+                                const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+                                const templatePath = template.htmlPath.replace(/\\/g, '/');
+                                if (basePath.match(/^[A-Za-z]:/)) {
+                                    iframeSrc = 'file:///' + basePath.replace(/\\/g, '/') + '/' + templatePath;
+                                } else {
+                                    iframeSrc = 'file:///' + basePath + '/' + templatePath;
+                                }
+                            } else {
+                                const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+                                iframeSrc = new URL(template.htmlPath.replace(/\\/g, '/'), baseUrl + '/').href;
+                            }
+                            
+                            setupIframe(templateId, iframeSrc, `loading-${templateId}`);
+                        }
+                    }, delay);
+                });
+            }
+        }
+
+        function renderPagination(totalPages) {
+            const paginationContainer = document.getElementById('paginationContainer');
+            
+            if (totalPages <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+
+            let paginationHTML = '';
+
+            // Previous button
+            if (currentPage > 1) {
+                paginationHTML += `
+                    <button onclick="changePage(${currentPage - 1})" class="px-5 py-2.5 bg-gray-800/70 hover:bg-gray-700/80 text-white rounded-lg font-semibold transition-all hover:scale-105 border border-gray-600/50 hover:border-blue-500/50 shadow-lg">
+                        ⬅️ قبلی
+                    </button>
+                `;
+            } else {
+                paginationHTML += `
+                    <button disabled class="px-5 py-2.5 bg-gray-900/50 text-gray-600 rounded-lg font-semibold cursor-not-allowed opacity-50 border border-gray-800/50">
+                        ⬅️ قبلی
+                    </button>
+                `;
+            }
+
+            // Page numbers
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage < maxVisiblePages - 1) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+
+            if (startPage > 1) {
+                paginationHTML += `
+                    <button onclick="changePage(1)" class="px-4 py-2 bg-gray-800/70 hover:bg-gray-700/80 text-white rounded-lg font-semibold transition-all hover:scale-105 border border-gray-600/50 hover:border-blue-500/50 shadow-lg">
+                        1
+                    </button>
+                `;
+                if (startPage > 2) {
+                    paginationHTML += `<span class="px-2 text-gray-500 font-semibold">...</span>`;
+                }
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                if (i === currentPage) {
+                    paginationHTML += `
+                        <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg font-bold scale-110 shadow-xl border border-blue-400/50">
+                            ${i}
+                        </button>
+                    `;
+                } else {
+                    paginationHTML += `
+                        <button onclick="changePage(${i})" class="px-4 py-2 bg-gray-800/70 hover:bg-gray-700/80 text-white rounded-lg font-semibold transition-all hover:scale-105 border border-gray-600/50 hover:border-blue-500/50 shadow-lg">
+                            ${i}
+                        </button>
+                    `;
+                }
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    paginationHTML += `<span class="px-2 text-gray-500 font-semibold">...</span>`;
+                }
+                paginationHTML += `
+                    <button onclick="changePage(${totalPages})" class="px-4 py-2 bg-gray-800/70 hover:bg-gray-700/80 text-white rounded-lg font-semibold transition-all hover:scale-105 border border-gray-600/50 hover:border-blue-500/50 shadow-lg">
+                        ${totalPages}
+                    </button>
+                `;
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                paginationHTML += `
+                    <button onclick="changePage(${currentPage + 1})" class="px-5 py-2.5 bg-gray-800/70 hover:bg-gray-700/80 text-white rounded-lg font-semibold transition-all hover:scale-105 border border-gray-600/50 hover:border-blue-500/50 shadow-lg">
+                        بعدی ➡️
+                    </button>
+                `;
+            } else {
+                paginationHTML += `
+                    <button disabled class="px-5 py-2.5 bg-gray-900/50 text-gray-600 rounded-lg font-semibold cursor-not-allowed opacity-50 border border-gray-800/50">
+                        بعدی ➡️
+                    </button>
+                `;
+            }
+
+            paginationContainer.innerHTML = paginationHTML;
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredTemplates.length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                renderTemplates();
+                // Scroll to top of templates grid
+                document.getElementById('templatesGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Make changePage globally accessible
+        window.changePage = changePage;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in and show user panel button
+            const currentUser = localStorage.getItem('currentUser');
+            const userPanelLink = document.getElementById('userPanelLink');
+            if (currentUser && userPanelLink) {
+                userPanelLink.classList.remove('hidden');
+            }
+            
+            // Initial render of category filters (function is defined above)
+            if (typeof renderCategoryFilters === 'function') {
+                renderCategoryFilters();
+            }
+
+            // Search
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchQuery = e.target.value;
+                    filterTemplates();
+                });
+            }
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+
+            // Initial render - ensure templates are loaded first
+            setTimeout(() => {
+                // Re-sync templates
+                syncAdminTemplates();
+                // Update filtered templates
+                filteredTemplates = [...templates];
+                // Filter and render
+                filterTemplates();
+                renderTemplates();
+            }, 200);
+
+            // Theme Toggle Functionality
+            (function() {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                const html = document.documentElement;
+                
+                function updateLogo(theme) {
+                    const headerLogo = document.getElementById('headerLogo');
+                    const lightLogo = 'images/blog/r.php (2).png';
+                    const darkLogo = 'images/blog/r.php (3).png';
+                    
+                    if (theme === 'dark') {
+                        if (headerLogo) {
+                            headerLogo.src = darkLogo;
+                        }
+                    } else {
+                        if (headerLogo) {
+                            headerLogo.src = lightLogo;
+                        }
+                    }
+                }
+                
+                if (savedTheme === 'dark') {
+                    html.classList.add('dark');
+                } else {
+                    html.classList.remove('dark');
+                }
+                
+                setTimeout(function() {
+                    const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+                    updateLogo(currentTheme);
+                }, 100);
+                
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function() {
+                        html.classList.toggle('dark');
+                        const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+                        localStorage.setItem('theme', currentTheme);
+                        updateLogo(currentTheme);
+                    });
+                }
+                
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.attributeName === 'class') {
+                            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+                            updateLogo(currentTheme);
+                        }
+                    });
+                });
+                
+                observer.observe(html, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+            })();
+
+            // Cart Functionality
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            function updateCartBadge() {
+                const badge = document.getElementById('cartBadge');
+                if (badge) {
+                    const count = cart.length;
+                    if (count > 0) {
+                        badge.textContent = count;
+                        badge.classList.remove('hidden');
+                    } else {
+                        badge.classList.add('hidden');
+                    }
+                }
+            }
+            
+            const cartButton = document.getElementById('cartButton');
+            if (cartButton) {
+                cartButton.addEventListener('click', function() {
+                    window.location.href = 'index.html#cart';
+                });
+            }
+            
+            updateCartBadge();
+        });
+    </script>
+</body>
+</html>

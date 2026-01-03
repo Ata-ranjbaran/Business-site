@@ -1,0 +1,3079 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>وب لجندر - راهکارهای نوین کسب و کار</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        [dir="rtl"] {
+            direction: rtl;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #f8fafc;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+            background-size: 100% 100%, 100% 100%, 100% 100%;
+            background-position: 0 0, 0 0, 0 0;
+            background-repeat: no-repeat;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.02) 10px,
+                    rgba(59, 130, 246, 0.02) 20px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.02) 10px,
+                    rgba(59, 130, 246, 0.02) 20px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+        /* Dark Mode Styles */
+        .dark body {
+            background: #0f172a;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+            background-size: 100% 100%, 100% 100%, 100% 100%;
+            background-position: 0 0, 0 0, 0 0;
+            background-repeat: no-repeat;
+            color: #e2e8f0;
+        }
+        .dark body::before {
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.02) 10px,
+                    rgba(59, 130, 246, 0.02) 20px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(59, 130, 246, 0.02) 10px,
+                    rgba(59, 130, 246, 0.02) 20px
+                );
+        }
+        .dark .bg-white {
+            background-color: #1e293b !important;
+        }
+        .dark .bg-gray-50 {
+            background-color: #0f172a !important;
+        }
+        .dark .text-gray-800,
+        .dark .text-gray-900 {
+            color: #e2e8f0 !important;
+        }
+        .dark .text-gray-600 {
+            color: #cbd5e1 !important;
+        }
+        .dark .text-gray-500 {
+            color: #94a3b8 !important;
+        }
+        .dark .border-gray-200 {
+            border-color: #334155 !important;
+        }
+        .dark .border-gray-100 {
+            border-color: #475569 !important;
+        }
+        .dark .card {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        .dark .header-fixed {
+            background: rgba(15, 23, 42, 0.95) !important;
+        }
+        .dark .sigma-logo {
+            color: #e2e8f0 !important;
+        }
+        .dark nav a {
+            color: #cbd5e1 !important;
+        }
+        .dark nav a:hover {
+            color: #60a5fa !important;
+        }
+        .dark .bg-gray-100 {
+            background-color: #1e293b !important;
+        }
+        .dark .bg-gray-200 {
+            background-color: #334155 !important;
+        }
+        .dark .text-white {
+            color: #e2e8f0 !important;
+        }
+        .dark .hero-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+        }
+        .dark .hero-banner-content::before {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 64, 175, 0.8) 100%);
+        }
+        .dark .bg-blue-900 {
+            background-color: #1e40af !important;
+        }
+        .dark .bg-blue-800 {
+            background-color: #1e3a8a !important;
+        }
+        .dark .bg-gray-900 {
+            background-color: #0f172a !important;
+        }
+        .dark footer {
+            background-color: #0f172a !important;
+        }
+        .dark footer.bg-gray-900 {
+            background-color: #0f172a !important;
+        }
+        .dark footer .text-white {
+            color: #e2e8f0 !important; 
+        }
+        .dark footer .text-gray-400 {
+            color: #94a3b8 !important;
+        }
+        .dark footer .border-gray-800 {
+            border-color: #1e293b !important;
+        }
+        .dark footer .bg-gray-800 {
+            background-color: #1e293b !important;
+        }
+        .dark footer .sigma-logo {
+            color: #e2e8f0 !important;
+        }
+        .dark footer h4 {
+            color: #e2e8f0 !important;
+        }
+        .dark footer a {
+            color: #94a3b8 !important;
+        }
+        .dark footer a:hover {
+            color: #60a5fa !important;
+        }
+        .dark footer a.hover\:text-white:hover {
+            color: #60a5fa !important;
+        }
+        .dark footer p {
+            color: #94a3b8 !important;
+        }
+        .dark .blog-modal-content {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+        }
+        .dark .blog-modal-content h2,
+        .dark .blog-modal-content h3 {
+            color: #e2e8f0 !important;
+        }
+        .dark .blog-modal-content p,
+        .dark .blog-modal-content li {
+            color: #cbd5e1 !important;
+        }
+        .dark .blog-modal-content .border-gray-200 {
+            border-color: #334155 !important;
+        }
+        .dark input,
+        .dark textarea {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+        .dark input::placeholder,
+        .dark textarea::placeholder {
+            color: #94a3b8 !important;
+        }
+        .dark input:focus,
+        .dark textarea:focus {
+            border-color: #60a5fa !important;
+            background-color: #1e293b !important;
+        }
+        .dark .bg-white.z-10 {
+            background-color: #1e293b !important;
+        }
+        /* Theme Toggle Button */
+        .dark .theme-toggle-btn {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+        }
+        .dark .theme-toggle-btn:hover {
+            background-color: #334155 !important;
+        }
+        .dark .theme-icon-moon {
+            display: none !important;
+        }
+        .dark .theme-icon-sun {
+            display: block !important;
+        }
+        .theme-icon-sun {
+            display: none;
+        }
+        /* Cart Button Dark Mode */
+        .dark #cartButton {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+        }
+        .dark #cartButton:hover {
+            background-color: #334155 !important;
+        }
+        /* User Panel Button Dark Mode */
+        .dark #userPanelLink {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+        }
+        .dark #userPanelLink:hover {
+            background-color: #334155 !important;
+        }
+        section {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            min-height: 200px;
+        }
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        /* Support Chat Button */
+        .support-chat-button {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+        .support-chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(59, 130, 246, 0.6);
+        }
+        .support-chat-button i {
+            color: white;
+            font-size: 24px;
+        }
+        .support-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+            border: 2px solid white;
+            z-index: 1;
+        }
+        .dark .support-badge {
+            border-color: #1e293b;
+        }
+        .dark .support-chat-button {
+            border-color: #1e293b;
+        }
+        /* Chat Modal */
+        .chat-modal {
+            display: none !important;
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            width: 380px;
+            max-width: calc(100vw - 60px);
+            height: 600px;
+            max-height: calc(100vh - 140px);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .dark .chat-modal {
+            background: #1e293b;
+        }
+        .chat-modal.active {
+            display: flex !important;
+        }
+        .chat-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chat-header h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .chat-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .chat-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f9fafb;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .dark .chat-messages {
+            background: #0f172a;
+        }
+        .chat-message {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .chat-message.user {
+            align-items: flex-end;
+        }
+        .chat-message.admin {
+            align-items: flex-start;
+        }
+        .chat-bubble {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            word-wrap: break-word;
+        }
+        .chat-message.user .chat-bubble {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-message.admin .chat-bubble {
+            background: white;
+            color: #111827;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .dark .chat-message.admin .chat-bubble {
+            background: #334155;
+            color: #e2e8f0;
+        }
+        .chat-time {
+            font-size: 11px;
+            color: #6b7280;
+            padding: 0 8px;
+        }
+        .dark .chat-time {
+            color: #94a3b8;
+        }
+        .chat-input-container {
+            padding: 16px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .dark .chat-input-container {
+            background: #1e293b;
+            border-top-color: #334155;
+        }
+        .chat-options-bar {
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .dark .chat-options-bar {
+            border-bottom-color: #334155;
+        }
+        .chat-topic-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            outline: none;
+            font-size: 13px;
+            background: white;
+            color: #111827;
+            transition: all 0.3s ease;
+        }
+        .dark .chat-topic-select {
+            background: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        .chat-topic-select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .chat-input-wrapper {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .chat-image-btn {
+            width: 40px;
+            height: 40px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 50%;
+            color: #6b7280;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .dark .chat-image-btn {
+            background: #0f172a;
+            border-color: #334155;
+            color: #94a3b8;
+        }
+        .chat-image-btn:hover {
+            background: #e5e7eb;
+            color: #3b82f6;
+        }
+        .dark .chat-image-btn:hover {
+            background: #334155;
+            color: #60a5fa;
+        }
+        .chat-topic-btn {
+            width: 40px;
+            height: 40px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 50%;
+            color: #6b7280;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .dark .chat-topic-btn {
+            background: #0f172a;
+            border-color: #334155;
+            color: #94a3b8;
+        }
+        .chat-topic-btn:hover {
+            background: #e5e7eb;
+            color: #3b82f6;
+        }
+        .dark .chat-topic-btn:hover {
+            background: #334155;
+            color: #60a5fa;
+        }
+        .chat-topic-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 24px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .dark .chat-input {
+            background: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        .chat-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .chat-send {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .chat-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        .chat-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .chat-image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 12px;
+            margin-top: 4px;
+            object-fit: cover;
+            border: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .chat-image-preview:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .dark .chat-image-preview {
+            border-color: #334155;
+        }
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .image-modal.active {
+            display: flex;
+        }
+        .image-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .image-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        .image-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .image-zoom-controls {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .image-zoom-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .image-zoom-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .chat-topic-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .dark .chat-topic-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+        .chat-empty {
+            text-align: center;
+            color: #6b7280;
+            padding: 40px 20px;
+        }
+        .dark .chat-empty {
+            color: #94a3b8;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .gradient-bg-2 {
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+        }
+        .gradient-bg-3 {
+            background: linear-gradient(135deg, #1e40af 0%, #60a5fa 100%);
+        }
+        .sigma-primary {
+            color: #1e3a8a;
+        }
+        .sigma-bg {
+            background: #1e3a8a;
+        }
+        .sigma-bg-light {
+            background: #eff6ff;
+        }
+        .card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .blog-image, .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .blog-image,
+        .card:hover .gallery-image {
+            transform: scale(1.1);
+        }
+        .gallery-iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: #f3f4f6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 1;
+            visibility: visible;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+        .gallery-item .gallery-image {
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 0;
+            opacity: 0.1;
+        }
+        .gallery-item:hover .gallery-image {
+            opacity: 0.2;
+        }
+        .header-fixed a {
+            position: relative;
+        }
+        .header-fixed a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: #1e3a8a;
+            transition: width 0.3s ease;
+        }
+        .header-fixed a:hover::after {
+            width: 100%;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.4);
+        }
+        .sigma-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes blob {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        .comment-card {
+            animation-fill-mode: both;
+        }
+        
+        .comment-card:hover {
+            animation: pulse 1s ease-in-out infinite;
+        }
+        
+        #commentsDisplay .grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 1.25rem !important;
+        }
+        
+        @media (max-width: 768px) {
+            #commentsDisplay .grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        .hero-banner {
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .hero-banner-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 600px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .hero-banner-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.85) 0%, rgba(59, 130, 246, 0.75) 100%);
+            z-index: 1;
+        }
+        .hero-banner-content img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            display: block;
+        }
+        .hero-banner-content .container {
+            position: relative;
+            z-index: 2;
+        }
+        .header-fixed {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .blog-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        .blog-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .blog-modal-content {
+            background: white;
+            border-radius: 1.5rem;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.4s ease;
+        }
+        .blog-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        article:hover .blog-image {
+            transform: scale(1.05);
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="header-fixed">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="images/blog/r.php%20(2).png" alt="وب لجندر" class="logo-image w-full h-full object-contain" id="headerLogo" onerror="this.src='images/blog/r.php (2).png';">
+                    </div>
+                    <div>
+                        <h1 class="sigma-logo text-gray-900">وب لجندر</h1>
+                        <p class="text-xs text-gray-500">راهکارهای نوین کسب و کار</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-blue-900 font-semibold hover:text-blue-700 transition">خانه</a>
+                    <a href="templates.html" class="text-gray-600 hover:text-blue-900 transition">قالب ها</a>
+                    <a href="modules-standalone.html" class="text-gray-600 hover:text-blue-900 transition">ماژول ها</a>
+                    <a href="#blog" class="text-gray-600 hover:text-blue-900 transition">وبلاگ</a>
+                    <a href="#comments" class="text-gray-600 hover:text-blue-900 transition">نظرات</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-900 transition">تماس با ما</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a href="user-panel.html" id="userPanelLink" class="relative w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition hidden" title="پنل کاربری">
+                        <i class="fas fa-user text-lg"></i>
+                    </a>
+                    <button id="cartButton" class="relative w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" title="سبد خرید">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span id="cartBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                    <button id="themeToggle" class="theme-toggle-btn w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" title="تغییر تم">
+                        <i class="fas fa-moon theme-icon-moon text-lg"></i>
+                        <i class="fas fa-sun theme-icon-sun text-lg hidden"></i>
+                    </button>
+                    <button class="md:hidden text-gray-600 text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-banner-content" style="background-image: url('images/blog/slider.jpg');">
+            <img src="images/blog/slider.jpg" alt="راهکارهای نوین کسب و کار" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+            <div class="container mx-auto px-4 text-center text-white">
+                <div class="max-w-4xl mx-auto">
+                    <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 fade-in">
+                        <span class="text-sm font-semibold">🚀 راهکارهای نوین</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-6 fade-in leading-tight drop-shadow-lg">راهکارهای نوین برای رشد کسب و کار شما</h2>
+                    <p class="text-lg md:text-2xl mb-8 text-white/95 fade-in max-w-3xl mx-auto leading-relaxed drop-shadow-md">وب لجندر با ارائه راهکارهای تخصصی و خدمات حرفه‌ای، همراه شما در مسیر موفقیت است. ما با تیمی متخصص و تجربه‌ای غنی، کسب و کار شما را به سطح جدیدی می‌رسانیم.</p>
+                    <div class="flex flex-wrap gap-4 justify-center fade-in">
+                        <a href="#contact" class="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center gap-2">
+                            <i class="fas fa-rocket"></i>
+                            درخواست مشاوره رایگان
+                        </a>
+                        <a href="templates.html" class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/30 transition border-2 border-white/40 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
+                            <i class="fas fa-eye"></i>
+                            مشاهده قالب ها
+            </a>
+        </div>
+                    <div class="mt-12 flex flex-wrap justify-center gap-8 fade-in">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">500+</div>
+                            <div class="text-sm text-white/80">پروژه موفق</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">98%</div>
+                            <div class="text-sm text-white/80">رضایت مشتری</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">24/7</div>
+                            <div class="text-sm text-white/80">پشتیبانی</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services/Features Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">چرا وب لجندر را انتخاب کنید؟</h2>
+                <p class="text-gray-600 text-lg">ما با ارائه راهکارهای تخصصی و خدمات حرفه‌ای، همراه شما در مسیر موفقیت هستیم</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">راهکارهای نوین</h3>
+                    <p class="text-gray-600">ارائه راهکارهای خلاقانه و نوآورانه برای رشد و توسعه کسب و کار شما</p>
+                </div>
+                <div class="card bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">تیم متخصص</h3>
+                    <p class="text-gray-600">تیمی از متخصصان با تجربه و حرفه‌ای در زمینه ارائه خدمات کسب و کار</p>
+                </div>
+                <div class="card bg-white rounded-xl p-8 text-center shadow-md hover:shadow-xl">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">عملکرد سریع</h3>
+                    <p class="text-gray-600">ارائه خدمات با کیفیت و سرعت بالا برای رضایت کامل مشتریان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Cards -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">قالب ها و ماژول های ما</h2>
+                <p class="text-gray-600 text-lg">انتخاب کنید و شروع کنید</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Services Card -->
+                <div class="card gradient-bg rounded-2xl p-8 text-white shadow-xl hover:shadow-2xl">
+                    <div class="text-5xl mb-4 text-center">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4 text-center">قالب ها</h2>
+                    <p class="text-white/90 text-lg mb-6 text-center">
+                        مجموعه کامل قالب‌های تخصصی برای رشد و توسعه کسب و کار شما
+                    </p>
+                    <div class="flex flex-col gap-3">
+                        <a href="templates.html" class="bg-white/20 rounded-lg px-6 py-3 inline-block mx-auto block text-center hover:bg-white/30 transition">
+                            <span class="text-white font-semibold">مشاهده قالب ها <i class="fas fa-arrow-left mr-2"></i></span>
+                        </a>
+                </div>
+            </div>
+            
+                <!-- Products Card -->
+                <div class="card gradient-bg rounded-2xl p-8 text-white shadow-xl hover:shadow-2xl">
+                    <div class="text-5xl mb-4 text-center">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4 text-center">ماژول ها</h2>
+                    <p class="text-white/90 text-lg mb-6 text-center">
+                        مجموعه کامل ماژول‌ها و راهکارهای آماده برای استفاده
+                    </p>
+                    <div class="flex flex-col gap-3">
+                        <a href="modules-standalone.html" class="bg-white/20 rounded-lg px-6 py-3 inline-block mx-auto block text-center hover:bg-white/30 transition">
+                            <span class="text-white font-semibold">مشاهده ماژول ها <i class="fas fa-arrow-left mr-2"></i></span>
+                        </a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="text-5xl font-bold mb-2">500+</div>
+                    <div class="text-white/90 text-lg">پروژه موفق</div>
+        </div>
+                <div class="fade-in">
+                    <div class="text-5xl font-bold mb-2">1000+</div>
+                    <div class="text-white/90 text-lg">مشتری راضی</div>
+    </div>
+                <div class="fade-in">
+                    <div class="text-5xl font-bold mb-2">50+</div>
+                    <div class="text-white/90 text-lg">متخصص</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-5xl font-bold mb-2">99%</div>
+                    <div class="text-white/90 text-lg">رضایت مشتریان</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">نظرات مشتریان</h2>
+                <p class="text-gray-600 text-lg">آنچه مشتریان ما درباره وب لجندر می‌گویند</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-gray-50 rounded-2xl p-6">
+                    <div class="flex items-center gap-1 mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"وب لجندر با ارائه راهکارهای تخصصی و خدمات حرفه‌ای، کسب و کار ما را به سطح جدیدی رساند. بسیار راضی هستیم."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white font-bold">
+                            ع.ر
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-800">علی رضایی</div>
+                            <div class="text-sm text-gray-500">مدیر عامل</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-gray-50 rounded-2xl p-6">
+                    <div class="flex items-center gap-1 mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"تیم وب لجندر بسیار حرفه‌ای و متعهد هستند. کیفیت خدمات عالی است و به موقع تحویل می‌دهند."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white font-bold">
+                            س.م
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-800">سارا محمدی</div>
+                            <div class="text-sm text-gray-500">مدیر بازاریابی</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-gray-50 rounded-2xl p-6">
+                    <div class="flex items-center gap-1 mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"بهترین شرکتی که تا به حال با آن کار کرده‌ام. راهکارهای نوین و خدمات عالی. حتماً توصیه می‌کنم."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white font-bold">
+                            م.ح
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-800">محمد حسینی</div>
+                            <div class="text-sm text-gray-500">کارآفرین</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-gray-50" id="gallery">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">گالری پروژه‌ها</h2>
+                <p class="text-gray-600 text-lg">نمونه کارهای انجام شده با قالب‌های ما</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- قالب آرایشگاه -->
+                <div class="card rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-lg hover:shadow-2xl gallery-item" onclick="window.location.href='templates.html'">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=800&fit=crop" alt="قالب آرایشگاه" class="gallery-image absolute inset-0">
+                    <iframe src="template/پولی/ارایشگاه/templatemo_585_barber_shop/index.html" class="gallery-iframe absolute inset-0" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 z-10">
+                        <p class="text-white font-semibold text-lg">قالب آرایشگاه</p>
+                    </div>
+                </div>
+                <!-- قالب شرکتی وب لجندر -->
+                <div class="card rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-lg hover:shadow-2xl gallery-item" onclick="window.location.href='templates.html'">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=800&fit=crop" alt="قالب شرکتی وب لجندر" class="gallery-image absolute inset-0">
+                    <iframe src="template/پولی/شرکتی/sigma-main/dist/index.html" class="gallery-iframe absolute inset-0" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 z-10">
+                        <p class="text-white font-semibold text-lg">قالب شرکتی وب لجندر</p>
+                    </div>
+                </div>
+                <!-- قالب فروشگاه لباس -->
+                <div class="card rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-lg hover:shadow-2xl gallery-item" onclick="window.location.href='templates.html'">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=800&fit=crop" alt="قالب فروشگاه لباس" class="gallery-image absolute inset-0">
+                    <iframe src="template/پولی/لباس/templatemo_559_zay_shop/index.html" class="gallery-iframe absolute inset-0" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 z-10">
+                        <p class="text-white font-semibold text-lg">قالب فروشگاه لباس</p>
+                    </div>
+                </div>
+                <!-- قالب سفر -->
+                <div class="card rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-lg hover:shadow-2xl gallery-item" onclick="window.location.href='templates.html'">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=800&fit=crop" alt="قالب سفر" class="gallery-image absolute inset-0">
+                    <iframe src="template/پولی/گردشگری/templatemo_580_woox_travel/index.html" class="gallery-iframe absolute inset-0" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 z-10">
+                        <p class="text-white font-semibold text-lg">قالب سفر</p>
+                    </div>
+                </div>
+                <!-- قالب بازی -->
+                <div class="card rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-lg hover:shadow-2xl gallery-item" onclick="window.location.href='templates.html'">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=800&fit=crop" alt="قالب بازی" class="gallery-image absolute inset-0">
+                    <iframe src="template/پولی/بازی/templatemo_579_cyborg_gaming/index.html" class="gallery-iframe absolute inset-0" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 z-10">
+                        <p class="text-white font-semibold text-lg">قالب بازی</p>
+                    </div>
+                </div>
+                <!-- قالب موسیقی -->
+                <div class="card rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-lg hover:shadow-2xl gallery-item" onclick="window.location.href='templates.html'">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=800&fit=crop" alt="قالب موسیقی" class="gallery-image absolute inset-0">
+                    <iframe src="template/پولی/موسیقی/templatemo_583_festava_live/index.html" class="gallery-iframe absolute inset-0" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 z-10">
+                        <p class="text-white font-semibold text-lg">قالب موسیقی</p>
+                    </div>
+                </div>
+                <!-- قالب پورتفولیو -->
+                <div class="card rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-lg hover:shadow-2xl gallery-item" onclick="window.location.href='templates.html'">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=800&fit=crop" alt="قالب پورتفولیو" class="gallery-image absolute inset-0">
+                    <iframe src="template/پولی/مشاوره/templatemo_578_first_portfolio/index.html" class="gallery-iframe absolute inset-0" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 z-10">
+                        <p class="text-white font-semibold text-lg">قالب پورتفولیو</p>
+                    </div>
+                </div>
+                <!-- قالب املاک -->
+                <div class="card rounded-xl overflow-hidden aspect-square relative group cursor-pointer shadow-lg hover:shadow-2xl gallery-item" onclick="window.location.href='templates.html'">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=800&fit=crop" alt="قالب املاک" class="gallery-image absolute inset-0">
+                    <iframe src="template/پولی/خانه/templatemo_564_plot_listing/index.html" class="gallery-iframe absolute inset-0" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 z-10">
+                        <p class="text-white font-semibold text-lg">قالب املاک</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-16 bg-white" id="blog">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">آخرین مطالب وبلاگ</h2>
+                <p class="text-gray-600 text-lg">مقالات و آموزش‌های مفید</p>
+            </div>
+            <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog posts will be rendered here dynamically -->
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="inline-block bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition shadow-lg hover:shadow-xl">مشاهده همه مطالب</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800" id="comments">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">نظرات کاربران</h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">تجربیات و نظرات شما برای ما بسیار ارزشمند است</p>
+            </div>
+            
+            <!-- Comments Display -->
+            <div id="commentsDisplay" class="max-w-6xl mx-auto mb-16">
+                <div class="grid grid-cols-3 gap-5">
+                    <!-- Comments will be rendered here -->
+                </div>
+            </div>
+            
+            <!-- Comment Form -->
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-10 shadow-2xl border-2 border-blue-100 dark:border-slate-700">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-600 dark:to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-comment-dots text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">نظر خود را ثبت کنید</h3>
+                        <p class="text-gray-600 dark:text-gray-300">نظرات شما پس از تایید نمایش داده می‌شوند</p>
+                        <p id="commentLoginMessage" class="text-red-600 dark:text-red-400 font-semibold mt-2 hidden">
+                            <i class="fas fa-exclamation-circle ml-2"></i>برای ارسال نظر باید وارد حساب کاربری خود شوید
+                        </p>
+                    </div>
+                    <form id="commentForm" class="space-y-6" onsubmit="submitComment(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                                    <i class="fas fa-user text-blue-600 dark:text-blue-400 ml-2"></i> نام و نام خانوادگی
+                                </label>
+                                <input type="text" id="commentName" placeholder="نام خود را وارد کنید" class="w-full px-5 py-4 rounded-xl border-2 border-gray-200 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                                    <i class="fas fa-envelope text-blue-600 dark:text-blue-400 ml-2"></i> ایمیل
+                                </label>
+                                <input type="email" id="commentEmail" placeholder="ایمیل خود را وارد کنید" class="w-full px-5 py-4 rounded-xl border-2 border-gray-200 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-comment text-blue-600 dark:text-blue-400 ml-2"></i> نظر شما
+                            </label>
+                            <textarea id="commentContent" placeholder="نظر خود را بنویسید..." rows="5" class="w-full px-5 py-4 rounded-xl border-2 border-gray-200 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all resize-none" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-blue-700 hover:to-blue-800 dark:hover:from-blue-600 dark:hover:to-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-paper-plane ml-2"></i> ارسال نظر
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50" id="contact">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">تماس با ما</h2>
+                    <p class="text-gray-600 text-lg">سوالی دارید؟ با ما در ارتباط باشید</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card bg-white rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">اطلاعات تماس</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center text-white">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">آدرس</h4>
+                                    <p class="text-gray-600">تهران، خیابان ولیعصر، پلاک 123</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center text-white">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">تلفن</h4>
+                                    <p class="text-gray-600">021-12345678</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center text-white">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">ایمیل</h4>
+                                    <a href="mailto:WebLegender@gmail.com" class="text-gray-600 hover:text-blue-600 transition">WebLegender@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-white rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">ارسال پیام</h3>
+                        <p id="contactLoginMessage" class="text-red-600 font-semibold mb-4 hidden">
+                            <i class="fas fa-exclamation-circle ml-2"></i>برای ارسال پیام باید وارد حساب کاربری خود شوید
+                        </p>
+                        <form id="contactForm" class="space-y-4" onsubmit="submitContactForm(event)">
+                            <div>
+                                <input type="text" id="contactName" placeholder="نام و نام خانوادگی" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <input type="email" id="contactEmail" placeholder="ایمیل" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <input type="text" id="contactSubject" placeholder="موضوع" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <textarea id="contactMessage" placeholder="پیام شما" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition shadow-lg">ارسال پیام</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" class="blog-modal" onclick="closeBlogModal(event)">
+        <div class="blog-modal-content" onclick="event.stopPropagation()">
+            <div class="p-6 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white z-10 rounded-t-2xl">
+                <h2 id="blogModalTitle" class="text-2xl font-bold text-gray-900"></h2>
+                <button onclick="closeBlogModal()" class="text-gray-500 hover:text-gray-700 text-3xl font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">×</button>
+            </div>
+            <div class="p-6">
+                <div class="mb-6">
+                    <img id="blogModalImage" src="" alt="" class="w-full h-64 object-cover rounded-xl mb-4">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span id="blogModalCategory" class="text-sm font-semibold px-3 py-1 rounded-full"></span>
+                        <span id="blogModalDate" class="text-sm text-gray-500"><i class="far fa-calendar ml-1"></i></span>
+                    </div>
+                </div>
+                <div id="blogModalContent" class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                    <!-- محتوای کامل مقاله اینجا نمایش داده می‌شود -->
+                </div>
+            </div>
+                </div>
+            </div>
+            
+    <!-- Cart Modal -->
+    <div id="cartModal" class="blog-modal" onclick="closeCartModal(event)">
+        <div class="blog-modal-content" onclick="event.stopPropagation()">
+            <div class="p-6 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white z-10 rounded-t-2xl">
+                <h2 class="text-2xl font-bold text-gray-900">سبد خرید</h2>
+                <button onclick="closeCartModal()" class="text-gray-500 hover:text-gray-700 text-3xl font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">×</button>
+            </div>
+            <div class="p-6">
+                <div id="cartItems" class="space-y-4">
+                    <!-- آیتم‌های سبد خرید اینجا نمایش داده می‌شوند -->
+                    <div class="text-center py-8 text-gray-500">
+                        <i class="fas fa-shopping-cart text-4xl mb-4"></i>
+                        <p>سبد خرید شما خالی است</p>
+                    </div>
+                </div>
+                <div id="cartTotal" class="mt-6 pt-6 border-t border-gray-200 hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-lg font-bold text-gray-900">جمع کل:</span>
+                        <span id="totalPrice" class="text-xl font-bold text-blue-900">0 ریال</span>
+                    </div>
+                    <button onclick="checkout()" class="w-full bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition shadow-lg">
+                        تسویه حساب
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                            <img src="images/blog/r.php%20(2).png" alt="وب لجندر" class="logo-image w-full h-full object-contain" id="footerLogo" onerror="this.src='images/blog/r.php (2).png';">
+                        </div>
+                        <h3 class="text-xl font-bold sigma-logo">وب لجندر</h3>
+                    </div>
+                    <p class="text-gray-400">راهکارهای نوین کسب و کار برای رشد و توسعه کسب و کار شما</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">دسترسی سریع</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition">خانه</a></li>
+                        <li><a href="templates.html" class="hover:text-white transition">قالب ها</a></li>
+                        <li><a href="modules-standalone.html" class="hover:text-white transition">ماژول ها</a></li>
+                        <li><a href="#blog" class="hover:text-white transition">وبلاگ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">لینک‌های مفید</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">درباره ما</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">تماس با ما</a></li>
+                        <li><a href="#" class="hover:text-white transition">سوالات متداول</a></li>
+                        <li><a href="#" class="hover:text-white transition">قوانین و مقررات</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">ارتباط با ما</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:WebLegender@gmail.com" class="hover:text-white transition">WebLegender@gmail.com</a>
+                        </div>
+                        <div class="flex gap-4 mt-4">
+                            <a href="https://t.me/NoAvar_Web" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition" title="تلگرام">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="https://instagram.com/Taimaz_Web" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition" title="اینستاگرام">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/989931809749" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition" title="واتساپ">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 وب لجندر. تمامی حقوق محفوظ است.</p>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Support Chat Button -->
+    <button class="support-chat-button" id="supportChatButton" title="پشتیبانی">
+        <i class="fas fa-headset"></i>
+        <span class="support-badge" id="supportChatBadge" style="display: none;">0</span>
+    </button>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-header">
+            <div>
+                <h3>💬 پشتیبانی آنلاین</h3>
+                <p style="font-size: 12px; margin: 4px 0 0 0; opacity: 0.9;">ما اینجا هستیم تا کمک کنیم</p>
+            </div>
+            <button class="chat-close" id="chatClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-empty" id="chatEmpty">
+                <i class="fas fa-comments" style="font-size: 48px; opacity: 0.3; margin-bottom: 12px;"></i>
+                <p>سلام! چطور می‌تونم کمکتون کنم؟</p>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <div class="chat-options-bar" id="chatOptionsBar" style="display: none;">
+                <select class="chat-topic-select" id="chatTopicSelect">
+                    <option value="">انتخاب موضوع...</option>
+                    <option value="صفحه اصلی">صفحه اصلی</option>
+                    <option value="صفحه قالب‌ها">صفحه قالب‌ها</option>
+                    <option value="صفحه ماژول‌ها">صفحه ماژول‌ها</option>
+                    <option value="مشکل در خرید">مشکل در خرید</option>
+                    <option value="مشکل در دانلود">مشکل در دانلود</option>
+                    <option value="سوال فنی">سوال فنی</option>
+                    <option value="پیشنهاد">پیشنهاد</option>
+                    <option value="سایر">سایر</option>
+                </select>
+            </div>
+            <div class="chat-input-wrapper">
+                <label for="chatImageInput" class="chat-image-btn" title="ارسال تصویر">
+                    <i class="fas fa-image"></i>
+                    <input type="file" id="chatImageInput" accept="image/*" style="display: none;">
+                </label>
+                <input type="text" class="chat-input" id="chatInput" placeholder="پیام خود را بنویسید..." autocomplete="off">
+                <button class="chat-topic-btn" id="chatTopicBtn" title="انتخاب موضوع">
+                    <i class="fas fa-tag"></i>
+                </button>
+                <button class="chat-send" id="chatSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <button class="image-modal-close" id="imageModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="imageModalImg" src="" alt="تصویر بزرگ">
+            <div class="image-zoom-controls">
+                <button class="image-zoom-btn" id="imageZoomIn" title="بزرگنمایی">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="image-zoom-btn" id="imageZoomOut" title="کوچکنمایی">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="image-zoom-btn" id="imageZoomReset" title="بازگشت به اندازه اصلی">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Functionality
+        (function() {
+            // Get theme from localStorage or default to light
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            
+            // Function to update logo based on theme
+            function updateLogo(theme) {
+                const headerLogo = document.getElementById('headerLogo');
+                const footerLogo = document.getElementById('footerLogo');
+                const lightLogo = 'images/blog/r.php (2).png';
+                const darkLogo = 'images/blog/r.php (3).png';
+                
+                if (theme === 'dark') {
+                    if (headerLogo) {
+                        headerLogo.src = darkLogo;
+                    }
+                    if (footerLogo) {
+                        footerLogo.src = darkLogo;
+                    }
+                } else {
+                    if (headerLogo) {
+                        headerLogo.src = lightLogo;
+                    }
+                    if (footerLogo) {
+                        footerLogo.src = lightLogo;
+                    }
+                }
+            }
+            
+            // Apply saved theme
+            if (savedTheme === 'dark') {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+            
+            // Theme toggle button handler
+            document.addEventListener('DOMContentLoaded', function() {
+                // Update logo on page load
+                setTimeout(function() {
+                    const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+                    updateLogo(currentTheme);
+                }, 100);
+                
+                const themeToggle = document.getElementById('themeToggle');
+                
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function() {
+                        html.classList.toggle('dark');
+                        
+                        // Save theme preference
+                        const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+                        localStorage.setItem('theme', currentTheme);
+                        
+                        // Update logo
+                        updateLogo(currentTheme);
+                    });
+                }
+                
+                // Watch for theme changes
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.attributeName === 'class') {
+                            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+                            updateLogo(currentTheme);
+                        }
+                    });
+                });
+                
+                observer.observe(html, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+            });
+        })();
+
+        // Setup hero banner image
+        document.addEventListener('DOMContentLoaded', function() {
+            const bannerContent = document.querySelector('.hero-banner-content');
+            const bannerImg = bannerContent?.querySelector('img');
+            
+            if (bannerImg) {
+                bannerImg.onload = function() {
+                    // Image loaded successfully
+                    if (bannerContent) {
+                        bannerContent.style.backgroundImage = `url('${this.src}')`;
+                    }
+                };
+            }
+        });
+
+        // Shopping Cart Functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartBadge() {
+            const cartBadge = document.getElementById('cartBadge');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (cartBadge) {
+                if (totalItems > 0) {
+                    cartBadge.textContent = totalItems;
+                    cartBadge.classList.remove('hidden');
+                } else {
+                    cartBadge.classList.add('hidden');
+                }
+            }
+        }
+
+        function addToCart(type, name, description, price) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.type === type || item.id === type + '-' + name);
+            
+            if (existingItem) {
+                alert('این محصول قبلاً به سبد خرید اضافه شده است!');
+                return;
+            }
+            
+            // Add new item with quantity always 1
+            cart.push({
+                id: type + '-' + name,
+                type: type,
+                name: name,
+                description: description,
+                price: price || 0,
+                quantity: 1
+            });
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+            updateCartDisplay();
+            
+            // Update button state
+            if (type === 'templates') {
+                const btn = document.getElementById('templatesCartBtn');
+                const text = document.getElementById('templatesCartText');
+                if (btn && text) {
+                    btn.classList.remove('bg-white', 'text-blue-900', 'hover:bg-gray-100');
+                    btn.classList.add('bg-gray-400', 'text-white', 'cursor-not-allowed');
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-check"></i> <span id="templatesCartText">در سبد خرید قرار دارد</span>';
+                }
+            } else if (type === 'modules') {
+                const btn = document.getElementById('modulesCartBtn');
+                const text = document.getElementById('modulesCartText');
+                if (btn && text) {
+                    btn.classList.remove('bg-white', 'text-blue-900', 'hover:bg-gray-100');
+                    btn.classList.add('bg-gray-400', 'text-white', 'cursor-not-allowed');
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-check"></i> <span id="modulesCartText">در سبد خرید قرار دارد</span>';
+                }
+            }
+            
+            // Show notification
+            alert(`${name} به سبد خرید اضافه شد!`);
+        }
+
+        window.removeFromCart = function(id) {
+            // Convert id to string for comparison
+            const idStr = String(id);
+            cart = cart.filter(item => String(item.id) !== idStr);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+            updateCartDisplay();
+            
+            // Update button states if templates/modules are removed
+            const templatesInCart = cart.some(item => item.type === 'templates');
+            const modulesInCart = cart.some(item => item.type === 'modules');
+            
+            if (!templatesInCart) {
+                const btn = document.getElementById('templatesCartBtn');
+                if (btn) {
+                    btn.classList.remove('bg-gray-400', 'text-white', 'cursor-not-allowed');
+                    btn.classList.add('bg-white', 'text-blue-900', 'hover:bg-gray-100');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-shopping-cart"></i> <span id="templatesCartText">افزودن به سبد خرید</span>';
+                    btn.onclick = () => addToCart('templates', 'قالب ها', 'مجموعه کامل قالب‌های تخصصی', 0);
+                }
+            }
+            
+            if (!modulesInCart) {
+                const btn = document.getElementById('modulesCartBtn');
+                if (btn) {
+                    btn.classList.remove('bg-gray-400', 'text-white', 'cursor-not-allowed');
+                    btn.classList.add('bg-white', 'text-blue-900', 'hover:bg-gray-100');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-shopping-cart"></i> <span id="modulesCartText">افزودن به سبد خرید</span>';
+                    btn.onclick = () => addToCart('modules', 'ماژول ها', 'مجموعه کامل ماژول‌ها و راهکارهای آماده', 0);
+                }
+            }
+        };
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const totalPrice = document.getElementById('totalPrice');
+            
+            if (!cartItems) return;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="text-center py-8 text-gray-500">
+                        <i class="fas fa-shopping-cart text-4xl mb-4"></i>
+                        <p>سبد خرید شما خالی است</p>
+                    </div>
+                `;
+                if (cartTotal) cartTotal.classList.add('hidden');
+            } else {
+                cartItems.innerHTML = cart.map(item => {
+                    return `
+                    <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-900 dark:text-white mb-1">${item.name}</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">${item.description}</p>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 p-2 transition" title="حذف از سبد خرید">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                }).join('');
+                
+                if (cartTotal) {
+                    cartTotal.classList.remove('hidden');
+                    if (totalPrice) {
+                        const total = cart.reduce((sum, item) => {
+                            const itemPrice = item.pricingType === 'free' ? 0 : (item.price || 0);
+                            return sum + itemPrice;
+                        }, 0);
+                        // Format price with commas
+                        const formatPrice = (price) => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        totalPrice.textContent = total > 0 ? formatPrice(total) + ' ریال' : 'رایگان';
+                    }
+                }
+            }
+        }
+
+        window.updateQuantity = function(id, change) {
+            // Convert id to string for comparison
+            const idStr = String(id);
+            const item = cart.find(item => String(item.id) === idStr);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(idStr);
+                } else {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartBadge();
+                    updateCartDisplay();
+                }
+            }
+        };
+
+        function openCartModal() {
+            const cartModal = document.getElementById('cartModal');
+            if (cartModal) {
+                updateCartDisplay();
+                cartModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCartModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const cartModal = document.getElementById('cartModal');
+            if (cartModal) {
+                cartModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('سبد خرید شما خالی است!');
+                return;
+            }
+            // Check if user is logged in
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                // User not logged in, redirect to login page
+                window.location.href = 'login.html';
+            } else {
+                // User is logged in, go directly to payment
+                window.location.href = 'payment.html';
+            }
+        }
+
+        // Check if user is logged in and show user panel link
+        function checkUserLogin() {
+            const currentUser = localStorage.getItem('currentUser');
+            const userPanelLink = document.getElementById('userPanelLink');
+            if (currentUser && userPanelLink) {
+                userPanelLink.classList.remove('hidden');
+            }
+        }
+        
+        // Helper function to check if user is logged in
+        function requireLogin(action = 'استفاده از این قابلیت') {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (!currentUser) {
+                alert(`برای ${action}، لطفاً ابتدا وارد حساب کاربری خود شوید.`);
+                window.location.href = 'login.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Check login status and show/hide forms
+        function checkLoginStatus() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            const isLoggedIn = !!currentUser;
+            
+            // Show/hide login messages
+            const commentLoginMessage = document.getElementById('commentLoginMessage');
+            const contactLoginMessage = document.getElementById('contactLoginMessage');
+            
+            if (commentLoginMessage) {
+                if (!isLoggedIn) {
+                    commentLoginMessage.classList.remove('hidden');
+                } else {
+                    commentLoginMessage.classList.add('hidden');
+                }
+            }
+            
+            if (contactLoginMessage) {
+                if (!isLoggedIn) {
+                    contactLoginMessage.classList.remove('hidden');
+                } else {
+                    contactLoginMessage.classList.add('hidden');
+                }
+            }
+        }
+        
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserLogin();
+            checkLoginStatus();
+            updateCartBadge();
+            const cartButton = document.getElementById('cartButton');
+            if (cartButton) {
+                cartButton.addEventListener('click', openCartModal);
+            }
+            
+            // Check if templates/modules are in cart and update button states
+            const templatesInCart = cart.some(item => item.type === 'templates');
+            const modulesInCart = cart.some(item => item.type === 'modules');
+            
+            if (templatesInCart) {
+                const btn = document.getElementById('templatesCartBtn');
+                if (btn) {
+                    btn.classList.remove('bg-white', 'text-blue-900', 'hover:bg-gray-100');
+                    btn.classList.add('bg-gray-400', 'text-white', 'cursor-not-allowed');
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-check"></i> <span id="templatesCartText">در سبد خرید قرار دارد</span>';
+                }
+            }
+            
+            if (modulesInCart) {
+                const btn = document.getElementById('modulesCartBtn');
+                if (btn) {
+                    btn.classList.remove('bg-white', 'text-blue-900', 'hover:bg-gray-100');
+                    btn.classList.add('bg-gray-400', 'text-white', 'cursor-not-allowed');
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-check"></i> <span id="modulesCartText">در سبد خرید قرار دارد</span>';
+                }
+            }
+        });
+
+        // Initialize default blog posts in localStorage if empty
+        function initializeDefaultBlogPosts() {
+            const storedPosts = JSON.parse(localStorage.getItem('adminBlogPosts') || '[]');
+            if (storedPosts.length === 0) {
+                const defaultPosts = [
+                    {
+                        id: 1,
+                        title: "راهکارهای نوین کسب و کار",
+                        category: "آموزش",
+                        categoryClass: "text-blue-600 bg-blue-50",
+                        date: "15 دی 1403",
+                        image: "images/blog/73-min.jpg",
+                        content: `
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">مقدمه</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">در دنیای امروز، استفاده از راهکارهای نوین برای رشد و توسعه کسب و کار از اهمیت بالایی برخوردار است. در این مقاله به بررسی راهکارهای موثر برای پیشرفت کسب و کار می‌پردازیم.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">استفاده از تکنولوژی</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">یکی از مهم‌ترین راهکارهای نوین، استفاده از تکنولوژی‌های روز است. با بهره‌گیری از ابزارهای دیجیتال می‌توانید فرآیندهای کسب و کار خود را بهینه کنید و بهره‌وری را افزایش دهید.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">مدیریت مشتریان</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">مدیریت صحیح روابط با مشتریان یکی از کلیدی‌ترین عوامل موفقیت در کسب و کار است. با استفاده از سیستم‌های CRM می‌توانید ارتباط بهتری با مشتریان خود برقرار کنید.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">نتیجه‌گیری</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">با استفاده از راهکارهای نوین و به‌روز، می‌توانید کسب و کار خود را به سطح جدیدی برسانید و در بازار رقابتی امروز موفق باشید.</p>
+                        `,
+                        status: 'published',
+                        author: 'مدیر',
+                        views: 0
+                    },
+                    {
+                        id: 2,
+                        title: "بهینه‌سازی کدها",
+                        category: "نکته",
+                        categoryClass: "text-orange-600 bg-orange-50",
+                        date: "10 دی 1403",
+                        image: "images/blog/images_1700726041_655f0519383a9.jpg",
+                        content: `
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">اهمیت بهینه‌سازی</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">بهینه‌سازی کدها یکی از مهم‌ترین جنبه‌های توسعه نرم‌افزار است. کدهای بهینه شده نه تنها سریع‌تر اجرا می‌شوند، بلکه نگهداری آن‌ها نیز آسان‌تر است.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">نکات مهم</h3>
+                            <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                                <li>استفاده از الگوریتم‌های بهینه</li>
+                                <li>کاهش تعداد درخواست‌های HTTP</li>
+                                <li>فشرده‌سازی فایل‌های CSS و JavaScript</li>
+                                <li>استفاده از کش برای بهبود عملکرد</li>
+                                <li>بهینه‌سازی تصاویر و فایل‌های رسانه‌ای</li>
+                            </ul>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">ابزارهای مفید</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">ابزارهای مختلفی برای بهینه‌سازی کدها وجود دارد که می‌توانید از آن‌ها استفاده کنید. این ابزارها به شما کمک می‌کنند تا کدهای خود را بهبود دهید.</p>
+                        `,
+                        status: 'published',
+                        author: 'مدیر',
+                        views: 0
+                    },
+                    {
+                        id: 3,
+                        title: "روندهای جدید طراحی",
+                        category: "تکنولوژی",
+                        categoryClass: "text-green-600 bg-green-50",
+                        date: "5 دی 1403",
+                        image: "images/blog/webdesign-trends-2016.png",
+                        content: `
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">طراحی در سال 2024</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">طراحی وب در سال 2024 با روندهای جدید و جالبی همراه است. در این مقاله به بررسی مهم‌ترین روندهای طراحی می‌پردازیم.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">روندهای برتر</h3>
+                            <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                                <li>طراحی مینیمال و تمیز</li>
+                                <li>استفاده از انیمیشن‌های نرم</li>
+                                <li>طراحی تاریک (Dark Mode)</li>
+                                <li>استفاده از گرادیان‌های رنگی</li>
+                                <li>طراحی واکنش‌گرا و موبایل‌فرست</li>
+                            </ul>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">تکنیک‌های مدرن</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">استفاده از تکنیک‌های مدرن طراحی مانند Glassmorphism، Neumorphism و Micro-interactions می‌تواند تجربه کاربری را به طور قابل توجهی بهبود بخشد.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">نتیجه‌گیری</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">با آگاهی از روندهای جدید طراحی و استفاده از آن‌ها در پروژه‌های خود، می‌توانید وب‌سایت‌های مدرن و جذابی ایجاد کنید.</p>
+                        `,
+                        status: 'published',
+                        author: 'مدیر',
+                        views: 0
+                    }
+                ];
+                localStorage.setItem('adminBlogPosts', JSON.stringify(defaultPosts));
+            }
+        }
+        
+        // Load blog posts from localStorage or use default
+        function loadBlogPosts() {
+            // Make sure default posts are initialized
+            initializeDefaultBlogPosts();
+            const storedPosts = JSON.parse(localStorage.getItem('adminBlogPosts') || '[]');
+            
+            if (storedPosts.length > 0) {
+                // Filter only published posts that should be shown on homepage and take first 3
+                return storedPosts
+                    .filter(post => post.status === 'published' && (post.showOnHomepage !== false))
+                    .slice(0, 3)
+                    .map(post => ({
+                        title: post.title,
+                        category: post.category,
+                        categoryClass: post.categoryClass || 'text-blue-600 bg-blue-50',
+                        date: post.date,
+                        image: post.image,
+                        content: post.content
+                    }));
+            } else {
+                // Default blog posts (fallback)
+                return [
+                    {
+                        title: "راهکارهای نوین کسب و کار",
+                        category: "آموزش",
+                        categoryClass: "text-blue-600 bg-blue-50",
+                        date: "15 دی 1403",
+                        image: "images/blog/73-min.jpg",
+                        content: `
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">مقدمه</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">در دنیای امروز، استفاده از راهکارهای نوین برای رشد و توسعه کسب و کار از اهمیت بالایی برخوردار است. در این مقاله به بررسی راهکارهای موثر برای پیشرفت کسب و کار می‌پردازیم.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">استفاده از تکنولوژی</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">یکی از مهم‌ترین راهکارهای نوین، استفاده از تکنولوژی‌های روز است. با بهره‌گیری از ابزارهای دیجیتال می‌توانید فرآیندهای کسب و کار خود را بهینه کنید و بهره‌وری را افزایش دهید.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">مدیریت مشتریان</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">مدیریت صحیح روابط با مشتریان یکی از کلیدی‌ترین عوامل موفقیت در کسب و کار است. با استفاده از سیستم‌های CRM می‌توانید ارتباط بهتری با مشتریان خود برقرار کنید.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">نتیجه‌گیری</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">با استفاده از راهکارهای نوین و به‌روز، می‌توانید کسب و کار خود را به سطح جدیدی برسانید و در بازار رقابتی امروز موفق باشید.</p>
+                        `
+                    },
+                    {
+                        title: "بهینه‌سازی کدها",
+                        category: "نکته",
+                        categoryClass: "text-orange-600 bg-orange-50",
+                        date: "10 دی 1403",
+                        image: "images/blog/images_1700726041_655f0519383a9.jpg",
+                        content: `
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">اهمیت بهینه‌سازی</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">بهینه‌سازی کدها یکی از مهم‌ترین جنبه‌های توسعه نرم‌افزار است. کدهای بهینه شده نه تنها سریع‌تر اجرا می‌شوند، بلکه نگهداری آن‌ها نیز آسان‌تر است.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">نکات مهم</h3>
+                            <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                                <li>استفاده از الگوریتم‌های بهینه</li>
+                                <li>کاهش تعداد درخواست‌های HTTP</li>
+                                <li>فشرده‌سازی فایل‌های CSS و JavaScript</li>
+                                <li>استفاده از کش برای بهبود عملکرد</li>
+                                <li>بهینه‌سازی تصاویر و فایل‌های رسانه‌ای</li>
+                            </ul>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">ابزارهای مفید</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">ابزارهای مختلفی برای بهینه‌سازی کدها وجود دارد که می‌توانید از آن‌ها استفاده کنید. این ابزارها به شما کمک می‌کنند تا کدهای خود را بهبود دهید.</p>
+                        `
+                    },
+                    {
+                        title: "روندهای جدید طراحی",
+                        category: "تکنولوژی",
+                        categoryClass: "text-green-600 bg-green-50",
+                        date: "5 دی 1403",
+                        image: "images/blog/webdesign-trends-2016.png",
+                        content: `
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">طراحی در سال 2024</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">طراحی وب در سال 2024 با روندهای جدید و جالبی همراه است. در این مقاله به بررسی مهم‌ترین روندهای طراحی می‌پردازیم.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">روندهای برتر</h3>
+                            <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                                <li>طراحی مینیمال و تمیز</li>
+                                <li>استفاده از انیمیشن‌های نرم</li>
+                                <li>طراحی تاریک (Dark Mode)</li>
+                                <li>استفاده از گرادیان‌های رنگی</li>
+                                <li>طراحی واکنش‌گرا و موبایل‌فرست</li>
+                            </ul>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">تکنیک‌های مدرن</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">استفاده از تکنیک‌های مدرن طراحی مانند Glassmorphism، Neumorphism و Micro-interactions می‌تواند تجربه کاربری را به طور قابل توجهی بهبود بخشد.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-6">نتیجه‌گیری</h3>
+                            <p class="mb-4 text-gray-700 leading-relaxed">با آگاهی از روندهای جدید طراحی و استفاده از آن‌ها در پروژه‌های خود، می‌توانید وب‌سایت‌های مدرن و جذابی ایجاد کنید.</p>
+                        `
+                    }
+                ];
+            }
+        }
+        
+        // Initialize and load blog posts
+        let blogPosts = [];
+        
+        // Initialize default posts first (this will only run if localStorage is empty)
+        initializeDefaultBlogPosts();
+        
+        // Load blog posts (this will get from localStorage, which now has default posts if it was empty)
+        blogPosts = loadBlogPosts();
+        
+        // Listen for updates from admin panel
+        window.addEventListener('blogPostsUpdated', () => {
+            // Reload blog posts from localStorage
+            const updatedPosts = loadBlogPosts();
+            blogPosts.length = 0;
+            blogPosts.push(...updatedPosts);
+            renderBlogSection();
+        });
+        
+        // Render blog section dynamically
+        function renderBlogSection() {
+            const blogGrid = document.getElementById('blogGrid');
+            if (!blogGrid) return;
+            
+            if (blogPosts.length === 0) {
+                blogGrid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">هیچ مقاله‌ای یافت نشد</p>';
+                return;
+            }
+            
+            blogGrid.innerHTML = blogPosts.map((post, index) => {
+                // Extract text from HTML content for preview
+                const textContent = post.content.replace(/<[^>]*>/g, '').substring(0, 100);
+                return `
+                    <article class="card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-shadow cursor-pointer" onclick="openBlogModal(${index})">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="${post.image || 'images/blog/73-min.jpg'}" alt="${post.title}" class="blog-image" onerror="this.src='images/blog/73-min.jpg'">
+                        </div>
+                        <div class="p-6">
+                            <span class="${post.categoryClass} text-sm font-semibold px-3 py-1 rounded-full">${post.category}</span>
+                            <h3 class="text-xl font-bold text-gray-800 mt-3 mb-3">${post.title}</h3>
+                            <p class="text-gray-600 mb-4 line-clamp-2">${textContent}...</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <span class="text-sm text-gray-500"><i class="far fa-calendar ml-1"></i> ${post.date}</span>
+                                <span class="text-blue-600 font-semibold hover:text-blue-700 transition flex items-center gap-1">ادامه مطلب <i class="fas fa-arrow-left text-sm"></i></span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function openBlogModal(index) {
+            const post = blogPosts[index];
+            if (!post) return;
+
+            const modal = document.getElementById('blogModal');
+            const title = document.getElementById('blogModalTitle');
+            const image = document.getElementById('blogModalImage');
+            const category = document.getElementById('blogModalCategory');
+            const date = document.getElementById('blogModalDate');
+            const content = document.getElementById('blogModalContent');
+
+            title.textContent = post.title;
+            image.src = post.image;
+            image.alt = post.title;
+            category.textContent = post.category;
+            category.className = `text-sm font-semibold px-3 py-1 rounded-full ${post.categoryClass}`;
+            date.innerHTML = `<i class="far fa-calendar ml-1"></i> ${post.date}`;
+            content.innerHTML = post.content;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlogModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('blogModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBlogModal();
+            }
+        });
+
+        // Initialize default blog posts on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeDefaultBlogPosts);
+        } else {
+            initializeDefaultBlogPosts();
+        }
+        
+        // Comments Management
+        // Initialize default comments
+        function initializeDefaultComments() {
+            const storedComments = JSON.parse(localStorage.getItem('adminComments') || '[]');
+            if (storedComments.length === 0) {
+                const defaultComments = [
+                    {
+                        id: 1,
+                        name: 'علی احمدی',
+                        email: 'ali@example.com',
+                        content: 'خدمات فوق‌العاده‌ای دارید! قالب‌ها و ماژول‌های شما واقعاً حرفه‌ای و با کیفیت هستند. استفاده از آن‌ها کار من را خیلی راحت کرده.',
+                        status: 'approved',
+                        date: '20 دی 1403',
+                        createdAt: new Date('2024-01-10').toISOString()
+                    },
+                    {
+                        id: 2,
+                        name: 'سارا محمدی',
+                        email: 'sara@example.com',
+                        content: 'پشتیبانی عالی و پاسخگویی سریع. من از قالب شرکتی استفاده کردم و نتیجه بسیار راضی‌کننده بود. حتماً دوباره سفارش می‌دهم.',
+                        status: 'approved',
+                        date: '18 دی 1403',
+                        createdAt: new Date('2024-01-08').toISOString()
+                    },
+                    {
+                        id: 3,
+                        name: 'محمد رضایی',
+                        email: 'mohammad@example.com',
+                        content: 'کیفیت کدها و طراحی‌ها عالی است. ماژول گالری که خریدم دقیقاً همان چیزی بود که نیاز داشتم. ممنون از تیم حرفه‌ای شما.',
+                        status: 'approved',
+                        date: '15 دی 1403',
+                        createdAt: new Date('2024-01-05').toISOString()
+                    }
+                ];
+                localStorage.setItem('adminComments', JSON.stringify(defaultComments));
+            }
+        }
+        
+        function loadComments() {
+            // Initialize default comments if needed
+            initializeDefaultComments();
+            
+            const allComments = JSON.parse(localStorage.getItem('adminComments') || '[]');
+            // Filter only approved comments and sort by date (newest first)
+            const approvedComments = allComments
+                .filter(c => c.status === 'approved')
+                .sort((a, b) => {
+                    const dateA = new Date(a.createdAt || a.date || 0);
+                    const dateB = new Date(b.createdAt || b.date || 0);
+                    return dateB - dateA; // Newest first
+                })
+                .slice(0, 3); // Only show 3 most recent
+            return approvedComments;
+        }
+        
+        function renderComments() {
+            const commentsDisplay = document.getElementById('commentsDisplay');
+            if (!commentsDisplay) return;
+            
+            const comments = loadComments();
+            const commentsContainer = commentsDisplay.querySelector('.grid');
+            if (!commentsContainer) {
+                commentsDisplay.innerHTML = '<div class="grid grid-cols-3 gap-5"></div>';
+            }
+            const gridContainer = commentsDisplay.querySelector('.grid');
+            
+            if (comments.length === 0) {
+                gridContainer.innerHTML = `
+                    <div class="col-span-3 text-center py-16">
+                        <div class="w-24 h-24 bg-gradient-to-br from-blue-200 to-purple-200 dark:from-blue-800 dark:to-purple-800 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                            <i class="fas fa-comments text-blue-600 dark:text-blue-400 text-4xl"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-lg font-semibold">هنوز نظری ثبت نشده است</p>
+                        <p class="text-gray-400 dark:text-gray-500 text-sm mt-2">اولین کسی باشید که نظر می‌دهد</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const gradients = [
+                'from-blue-500 to-cyan-500',
+                'from-purple-500 to-pink-500',
+                'from-indigo-500 to-blue-500'
+            ];
+            
+            gridContainer.innerHTML = comments.map((comment, index) => `
+                <div class="comment-card group relative transform transition-all duration-500 hover:scale-105 hover:-translate-y-2" style="animation: fadeInUp 0.6s ease-out ${index * 0.15}s both; opacity: 0;">
+                    <div class="bg-white rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col relative overflow-hidden">
+                        <!-- Decorative gradient corner -->
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${gradients[index]} opacity-10 rounded-bl-full"></div>
+                        
+                        <!-- Header -->
+                        <div class="flex items-start gap-3 mb-3 relative z-10">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-gradient-to-br ${gradients[index]} rounded-xl flex items-center justify-center text-white font-bold text-base shadow-md transform group-hover:rotate-12 transition-transform duration-300">
+                                    ${(comment.name || 'ن').charAt(0).toUpperCase()}
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-bold text-gray-900 text-sm mb-1 truncate">${comment.name || 'کاربر ناشناس'}</h4>
+                                <div class="flex items-center gap-1 text-xs text-gray-500">
+                                    <i class="far fa-calendar-alt text-xs"></i>
+                                    <span>${comment.date || new Date().toLocaleDateString('fa-IR')}</span>
+                                </div>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-gradient-to-br ${gradients[index]} rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm">
+                                    ${index + 1}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stars -->
+                        <div class="flex items-center gap-0.5 mb-3 relative z-10">
+                            ${Array(5).fill(0).map(() => `
+                                <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            `).join('')}
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="flex-1 mb-3 relative z-10">
+                            <p class="text-gray-700 leading-relaxed text-xs line-clamp-3">${comment.content}</p>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100 relative z-10">
+                            <div class="flex items-center gap-1.5 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                                <i class="fas fa-check-circle text-xs"></i>
+                                <span class="font-semibold text-xs">تایید شده</span>
+                            </div>
+                            <div class="text-gray-300 text-xs">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Hover effect overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-br ${gradients[index]} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300"></div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Ensure grid layout is correct
+            if (gridContainer) {
+                gridContainer.style.display = 'grid';
+                gridContainer.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                gridContainer.style.gap = '1.25rem';
+            }
+            
+            // Trigger animation after rendering
+            setTimeout(() => {
+                document.querySelectorAll('.comment-card').forEach((card, i) => {
+                    card.style.opacity = '1';
+                });
+            }, 100);
+        }
+        
+        function submitComment(event) {
+            event.preventDefault();
+            
+            // Check if user is logged in
+            if (!requireLogin('ارسال نظر')) {
+                return;
+            }
+            
+            const name = document.getElementById('commentName').value;
+            const email = document.getElementById('commentEmail').value;
+            const content = document.getElementById('commentContent').value;
+            
+            if (!name || !email || !content) {
+                alert('لطفاً تمام فیلدها را پر کنید');
+                return;
+            }
+            
+            // Load existing comments
+            const allComments = JSON.parse(localStorage.getItem('adminComments') || '[]');
+            
+            // Create new comment
+            const newComment = {
+                id: allComments.length > 0 ? Math.max(...allComments.map(c => c.id)) + 1 : 1,
+                name: name,
+                email: email,
+                content: content,
+                status: 'pending', // در انتظار تایید
+                date: new Date().toLocaleDateString('fa-IR'),
+                createdAt: new Date().toISOString()
+            };
+            
+            // Add to comments
+            allComments.push(newComment);
+            localStorage.setItem('adminComments', JSON.stringify(allComments));
+            
+            // Trigger update event for admin panel
+            window.dispatchEvent(new CustomEvent('commentsUpdated'));
+            
+            // Reset form
+            document.getElementById('commentForm').reset();
+            
+            // Show success message
+            alert('نظر شما با موفقیت ثبت شد و پس از تایید مدیر نمایش داده خواهد شد.');
+        }
+        
+        // Listen for updates from admin panel
+        window.addEventListener('commentsUpdated', () => {
+            renderComments();
+        });
+        
+        // Initialize default comments on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeDefaultComments);
+        } else {
+            initializeDefaultComments();
+        }
+        
+        // Setup gallery images and iframes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render blog section
+            renderBlogSection();
+            // Render comments
+            renderComments();
+            
+            // Ensure images are loaded
+            const galleryImages = document.querySelectorAll('.gallery-image');
+            galleryImages.forEach(img => {
+                img.onerror = function() {
+                    this.style.display = 'none';
+                };
+                img.onload = function() {
+                    this.style.opacity = '1';
+                };
+            });
+
+            // Setup gallery iframes with proper paths
+            const galleryIframes = document.querySelectorAll('.gallery-iframe');
+            galleryIframes.forEach(iframe => {
+                const src = iframe.getAttribute('src');
+                if (src) {
+                    // Convert relative path to absolute if needed
+                    if (window.location.protocol === 'file:') {
+                        let currentPath = window.location.pathname;
+                        if (window.location.href.includes('///')) {
+                            currentPath = window.location.href.replace('file:///', '');
+                        } else if (window.location.href.includes('//')) {
+                            currentPath = window.location.href.replace('file://', '');
+                        }
+                        if (currentPath.startsWith('/')) {
+                            currentPath = currentPath.substring(1);
+                        }
+                        const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+                        const templatePath = src.replace(/\\/g, '/');
+                        if (basePath.match(/^[A-Za-z]:/)) {
+                            iframe.src = 'file:///' + basePath.replace(/\\/g, '/') + '/' + templatePath;
+                        } else {
+                            iframe.src = 'file:///' + basePath + '/' + templatePath;
+                        }
+                    } else {
+                        const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+                        iframe.src = new URL(src.replace(/\\/g, '/'), baseUrl + '/').href;
+                    }
+                }
+            });
+        });
+
+        // Support Chat Functionality
+        (function() {
+            const chatButton = document.getElementById('supportChatButton');
+            const chatModal = document.getElementById('chatModal');
+            const chatClose = document.getElementById('chatClose');
+            const chatInput = document.getElementById('chatInput');
+            const chatSend = document.getElementById('chatSend');
+            const chatMessages = document.getElementById('chatMessages');
+            const chatEmpty = document.getElementById('chatEmpty');
+            const chatImageInput = document.getElementById('chatImageInput');
+            const chatTopicBtn = document.getElementById('chatTopicBtn');
+            const chatTopicSelect = document.getElementById('chatTopicSelect');
+            const chatOptionsBar = document.getElementById('chatOptionsBar');
+            
+            let selectedImage = null;
+            let selectedTopic = '';
+
+            // Track if history is loaded to prevent duplicates
+            let historyLoaded = false;
+
+            // Update support chat badge
+            function updateSupportChatBadge() {
+                const chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+                const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+                const currentUserId = currentUser ? (currentUser.email || currentUser.id || 'anonymous') : 'anonymous';
+                
+                // Find last admin message time for current user
+                const adminMessages = chatHistory.filter(msg => msg.sender === 'admin' && msg.targetUserId === currentUserId);
+                const lastAdminTime = adminMessages.length > 0 
+                    ? Math.max(...adminMessages.map(m => new Date(m.timestamp || 0).getTime()))
+                    : 0;
+                
+                // Count unread user messages (after last admin message)
+                const unreadCount = chatHistory.filter(msg => {
+                    if (msg.sender !== 'user') return false;
+                    const msgUserId = msg.userId || currentUserId;
+                    if (msgUserId !== currentUserId) return false;
+                    const msgTime = new Date(msg.timestamp || msg.time || 0).getTime();
+                    return msgTime > lastAdminTime;
+                }).length;
+                
+                const badge = document.getElementById('supportChatBadge');
+                if (badge) {
+                    if (unreadCount > 0) {
+                        badge.textContent = unreadCount;
+                        badge.style.display = 'inline-block';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                }
+            }
+
+            // Load chat history from localStorage (only once)
+            function loadChatHistory() {
+                if (historyLoaded) return; // Don't load again if already loaded
+                
+                const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+                if (!currentUser) {
+                    return; // User not logged in
+                }
+                
+                const userId = currentUser.email || currentUser.id;
+                const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+                
+                // Filter messages for this user only (both user and admin messages)
+                const userMessages = history.filter(msg => {
+                    if (msg.sender === 'user') {
+                        // Only show messages from current user
+                        return (msg.userId === userId || msg.userEmail === userId);
+                    } else if (msg.sender === 'admin') {
+                        // Only show admin messages targeted to current user
+                        return (msg.targetUserId === userId);
+                    }
+                    return false;
+                }).sort((a, b) => {
+                    // Sort by timestamp (oldest first)
+                    const timeA = new Date(a.timestamp || a.time || 0).getTime();
+                    const timeB = new Date(b.timestamp || b.time || 0).getTime();
+                    return timeA - timeB;
+                });
+                
+                if (userMessages.length > 0) {
+                    chatEmpty.style.display = 'none';
+                    userMessages.forEach(msg => {
+                        addMessageToChat(msg.text, msg.sender, msg.time, false, msg.image, msg.topic); // false = don't save again
+                    });
+                }
+                historyLoaded = true;
+            }
+
+            // Save message to localStorage
+            function saveMessage(text, sender, image = null, topic = '') {
+                const history = JSON.parse(localStorage.getItem('chatHistory')) || [];
+                const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+                const currentUserId = currentUser ? (currentUser.email || currentUser.id || 'anonymous') : 'anonymous';
+                const currentUserName = currentUser ? (currentUser.name || currentUser.email || 'کاربر') : 'کاربر';
+                
+                const message = {
+                    text: text,
+                    sender: sender,
+                    time: new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
+                    timestamp: new Date().toISOString(),
+                    image: image,
+                    topic: topic
+                };
+                
+                // Add user info for user messages
+                // Use email as primary userId (more unique and consistent)
+                if (sender === 'user') {
+                    // Always use email as userId if available (most unique identifier)
+                    // This ensures each user has a unique identifier
+                    const userEmail = currentUser ? (currentUser.email || '') : '';
+                    const userId = userEmail || currentUser.id || 'anonymous';
+                    
+                    message.userId = userId; // Use email as primary identifier
+                    message.userName = currentUserName;
+                    message.userEmail = userEmail; // Also store email separately
+                    
+                    // Debug log
+                    console.log('Saving user message:', {
+                        userId: message.userId,
+                        userEmail: message.userEmail,
+                        userName: message.userName,
+                        hasImage: !!image,
+                        hasText: !!text
+                    });
+                }
+                
+                history.push(message);
+                // Keep only last 100 messages
+                if (history.length > 100) {
+                    history.shift();
+                }
+                localStorage.setItem('chatHistory', JSON.stringify(history));
+                
+                // Update badge
+                if (sender === 'user') {
+                    updateSupportChatBadge();
+                }
+                
+                return message.time;
+            }
+
+            // Add message to chat
+            function addMessageToChat(text, sender, time, saveToStorage = true, image = null, topic = '') {
+                if (chatEmpty) {
+                    chatEmpty.style.display = 'none';
+                }
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${sender}`;
+                
+                const bubble = document.createElement('div');
+                bubble.className = 'chat-bubble';
+                
+                // Add topic badge if exists
+                if (topic) {
+                    const topicBadge = document.createElement('div');
+                    topicBadge.className = 'chat-topic-badge';
+                    topicBadge.textContent = `📌 ${topic}`;
+                    bubble.appendChild(topicBadge);
+                }
+                
+                // Add text if exists
+                if (text) {
+                    const textDiv = document.createElement('div');
+                    textDiv.textContent = text;
+                    bubble.appendChild(textDiv);
+                }
+                
+                // Add image if exists
+                if (image) {
+                    const img = document.createElement('img');
+                    img.src = image;
+                    img.className = 'chat-image-preview';
+                    img.alt = 'تصویر ارسالی';
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', () => openImageModal(image));
+                    bubble.appendChild(img);
+                }
+                
+                const timeSpan = document.createElement('span');
+                timeSpan.className = 'chat-time';
+                timeSpan.textContent = time || new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+                
+                messageDiv.appendChild(bubble);
+                messageDiv.appendChild(timeSpan);
+                chatMessages.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Save to storage only if it's a new message (not loading from history)
+                if (saveToStorage) {
+                    saveMessage(text, sender, image, topic);
+                    // Trigger update event for other tabs
+                    window.dispatchEvent(new CustomEvent('chatHistoryUpdated'));
+                }
+            }
+            
+            // Reload chat messages (filtered for current user)
+            function reloadChatMessages() {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+                if (!currentUser) {
+                    return;
+                }
+                
+                const userId = currentUser.email || currentUser.id;
+                const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+                
+                // Clear current messages
+                chatMessages.innerHTML = '';
+                
+                // Filter messages for this user only
+                const userMessages = history.filter(msg => {
+                    if (msg.sender === 'user') {
+                        return (msg.userId === userId || msg.userEmail === userId);
+                    } else if (msg.sender === 'admin') {
+                        return (msg.targetUserId === userId);
+                    }
+                    return false;
+                }).sort((a, b) => {
+                    const timeA = new Date(a.timestamp || a.time || 0).getTime();
+                    const timeB = new Date(b.timestamp || b.time || 0).getTime();
+                    return timeA - timeB;
+                });
+                
+                if (userMessages.length === 0) {
+                    chatEmpty.style.display = 'block';
+                } else {
+                    chatEmpty.style.display = 'none';
+                    userMessages.forEach(msg => {
+                        addMessageToChat(msg.text, msg.sender, msg.time, false, msg.image, msg.topic);
+                    });
+                }
+            }
+
+            // Convert image to base64
+            function imageToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            // Send message
+            async function sendMessage() {
+                // Check if user is logged in
+                if (!requireLogin('ارسال پیام به پشتیبانی')) {
+                    chatModal.classList.remove('active');
+                    return;
+                }
+                
+                const text = chatInput.value.trim();
+                const image = selectedImage;
+                const topic = selectedTopic;
+                
+                // Topic is required
+                if (!topic) {
+                    alert('لطفاً موضوع پیام را انتخاب کنید');
+                    chatTopicBtn.click(); // Open topic selector
+                    return;
+                }
+                
+                if (!text && !image) {
+                    alert('لطفاً متن یا تصویر را وارد کنید');
+                    return;
+                }
+
+                // Convert image to base64 if exists
+                let imageBase64 = null;
+                if (image) {
+                    try {
+                        imageBase64 = await imageToBase64(image);
+                    } catch (error) {
+                        alert('خطا در بارگذاری تصویر');
+                        return;
+                    }
+                }
+
+                // Add user message (will save to storage automatically)
+                const time = new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+                addMessageToChat(text, 'user', time, true, imageBase64, topic);
+                
+                // Clear inputs
+                chatInput.value = '';
+                selectedImage = null;
+                selectedTopic = '';
+                chatImageInput.value = '';
+                chatTopicSelect.value = '';
+                chatTopicBtn.classList.remove('active');
+                chatOptionsBar.style.display = 'none';
+                
+                // Reset image button style
+                const imageBtn = chatImageInput.parentElement;
+                imageBtn.style.background = '';
+                imageBtn.style.color = '';
+
+                // Don't send automatic responses - only real admin messages from admin panel will be shown
+            }
+
+            // Open chat modal
+            chatButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                // Check if user is logged in
+                if (!requireLogin('استفاده از پشتیبانی آنلاین')) {
+                    return;
+                }
+                
+                if (!chatModal.classList.contains('active')) {
+                    chatModal.classList.add('active');
+                    chatInput.focus();
+                    loadChatHistory();
+                    // Mark as read when opening chat
+                    updateSupportChatBadge();
+                }
+            });
+            
+            // Initialize badge on page load
+            updateSupportChatBadge();
+            // Update badge every 5 seconds
+            setInterval(updateSupportChatBadge, 5000);
+            
+            // Auto-refresh chat messages every 3 seconds (only if modal is open)
+            setInterval(() => {
+                if (chatModal.classList.contains('active')) {
+                    reloadChatMessages();
+                }
+            }, 3000);
+            
+            // Listen for chat updates
+            window.addEventListener('chatHistoryUpdated', () => {
+                if (chatModal.classList.contains('active')) {
+                    reloadChatMessages();
+                }
+                updateSupportChatBadge();
+            });
+            
+            // Auto-refresh chat messages every 3 seconds (only if modal is open)
+            setInterval(() => {
+                if (chatModal.classList.contains('active')) {
+                    reloadChatMessages();
+                }
+            }, 3000);
+            
+            // Listen for chat updates
+            window.addEventListener('chatHistoryUpdated', () => {
+                if (chatModal.classList.contains('active')) {
+                    reloadChatMessages();
+                }
+                updateSupportChatBadge();
+            });
+
+            // Close chat modal
+            chatClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                chatModal.classList.remove('active');
+            });
+
+            // Send on Enter key
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Send button click
+            chatSend.addEventListener('click', sendMessage);
+
+            // Image input change
+            chatImageInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                        alert('حجم تصویر باید کمتر از 5 مگابایت باشد');
+                        chatImageInput.value = '';
+                        return;
+                    }
+                    selectedImage = file;
+                    // Change icon to checkmark
+                    const imageBtn = chatImageInput.parentElement;
+                    const icon = imageBtn.querySelector('i');
+                    icon.className = 'fas fa-check';
+                    imageBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                    imageBtn.style.color = 'white';
+                } else {
+                    // Reset if file removed
+                    selectedImage = null;
+                    const imageBtn = chatImageInput.parentElement;
+                    const icon = imageBtn.querySelector('i');
+                    icon.className = 'fas fa-image';
+                    imageBtn.style.background = '';
+                    imageBtn.style.color = '';
+                }
+            });
+
+            // Topic button click
+            chatTopicBtn.addEventListener('click', () => {
+                chatTopicBtn.classList.toggle('active');
+                if (chatOptionsBar.style.display === 'none') {
+                    chatOptionsBar.style.display = 'block';
+                } else {
+                    chatOptionsBar.style.display = 'none';
+                }
+            });
+
+            // Topic select change
+            chatTopicSelect.addEventListener('change', (e) => {
+                selectedTopic = e.target.value;
+                if (selectedTopic) {
+                    chatTopicBtn.classList.add('active');
+                } else {
+                    chatTopicBtn.classList.remove('active');
+                }
+            });
+
+            // Close on outside click
+            document.addEventListener('click', (e) => {
+                if (chatModal.classList.contains('active') && 
+                    !chatModal.contains(e.target) && 
+                    !chatButton.contains(e.target)) {
+                    chatModal.classList.remove('active');
+                }
+            });
+
+            // Image Modal Functionality
+            const imageModal = document.getElementById('imageModal');
+            const imageModalImg = document.getElementById('imageModalImg');
+            const imageModalClose = document.getElementById('imageModalClose');
+            const imageZoomIn = document.getElementById('imageZoomIn');
+            const imageZoomOut = document.getElementById('imageZoomOut');
+            const imageZoomReset = document.getElementById('imageZoomReset');
+            
+            let currentZoom = 1;
+            const zoomStep = 0.2;
+            const minZoom = 0.5;
+            const maxZoom = 3;
+
+            function openImageModal(imageSrc) {
+                imageModalImg.src = imageSrc;
+                currentZoom = 1;
+                imageModalImg.style.transform = `scale(${currentZoom})`;
+                imageModalImg.style.transition = 'transform 0.3s ease';
+                imageModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeImageModal() {
+                imageModal.classList.remove('active');
+                document.body.style.overflow = '';
+                currentZoom = 1;
+                imageModalImg.style.transform = `scale(${currentZoom})`;
+            }
+
+            imageModalClose.addEventListener('click', closeImageModal);
+            
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    closeImageModal();
+                }
+            });
+
+            imageZoomIn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentZoom < maxZoom) {
+                    currentZoom = Math.min(currentZoom + zoomStep, maxZoom);
+                    imageModalImg.style.transform = `scale(${currentZoom})`;
+                }
+            });
+
+            imageZoomOut.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentZoom > minZoom) {
+                    currentZoom = Math.max(currentZoom - zoomStep, minZoom);
+                    imageModalImg.style.transform = `scale(${currentZoom})`;
+                }
+            });
+
+            imageZoomReset.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentZoom = 1;
+                imageModalImg.style.transform = `scale(${currentZoom})`;
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+                    closeImageModal();
+                }
+            });
+        })();
+
+        // Contact Form Submission
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            // Check if user is logged in
+            if (!requireLogin('ارسال پیام تماس با ما')) {
+                return;
+            }
+            
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            // Save to localStorage
+            const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+            const newMessage = {
+                id: messages.length > 0 ? Math.max(...messages.map(m => m.id)) + 1 : 1,
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                date: new Date().toISOString(),
+                read: false
+            };
+            
+            messages.push(newMessage);
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+            
+            // Show success message
+            alert('پیام شما با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
